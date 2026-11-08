@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-base: #F6F1E7;
+    --bg-surface: #EFE9DC;
+    --bg-card: #FFFFFF;
+    --border-subtle: #D8D1C2;
+    --text-primary: #181C20;
+    --text-secondary: #525B64;
+    --text-muted: #7E8893;
+    --accent-primary: #C77D2B; /* Confident Burnt Amber (Keyword syntax highlight) */
+    --accent-primary-hover: #AF6A20;
+    --accent-secondary: #2C6E5A; /* Slate Teal / Dusty Gold complement (Non-gradient) */
+    color-scheme: light dark;
+  }
+
+  .dark {
+    --bg-base: #0B0E11;
+    --bg-surface: #14181E;
+    --bg-card: #181D24;
+    --border-subtle: #2A303A;
+    --text-primary: #ECEFF4;
+    --text-secondary: #8E98A5;
+    --text-muted: #67717E;
+    --accent-primary: #C77D2B;
+    --accent-primary-hover: #DA8E39;
+    --accent-secondary: #3D8B73;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+  }
+
+  code, kbd, samp, pre, .font-mono {
+    font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+  }
+}
