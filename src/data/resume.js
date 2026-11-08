@@ -132,7 +132,7 @@ export const volunteering = {
   metrics: [
     { label: "Volunteers Led", value: "20+" },
     { label: "Attendees Coordinated", value: "1,000+" },
-    { label: "Operational Arenas", value: "Vizag Navy Marathon, Yogandhra" }
+    { label: "Events Managed", value: "Vizag Navy Marathon, Yogandhra" }
   ],
   description: "Served as Volunteer Team Lead managing on-ground logistics, crowd orientation, and rapid incident resolution across major civic gatherings, directing 20+ volunteers in high-density live operations."
 };

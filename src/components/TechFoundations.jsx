@@ -48,7 +48,7 @@ export default function TechFoundations() {
       title="Tech Foundations" 
       subtitle="Structured technical competencies spanning Python data pipelines, relational query formulation, semantic web standards, and diagnostics tooling."
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {foundations.map((item) => (
           <Card 
             key={item.category} 

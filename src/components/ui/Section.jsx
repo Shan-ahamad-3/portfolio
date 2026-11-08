@@ -1,8 +1,8 @@
 import { motion, useReducedMotion } from 'framer-motion';
 
 /**
- * Clean, broad section container wrapper with comfortable max-w-6xl / max-w-7xl horizontal space
- * and tightened vertical rhythm (py-16 md:py-20).
+ * Clean, broad section container wrapper with comfortable max-w-6xl horizontal space
+ * and tightened vertical rhythm (py-16 md:py-20) with consistent px-4 sm:px-6 lg:px-8 padding.
  */
 export default function Section({
   id,
@@ -10,7 +10,7 @@ export default function Section({
   subtitle,
   children,
   className = "",
-  containerClassName = "max-w-6xl px-6 md:px-12 mx-auto"
+  containerClassName = "max-w-6xl px-4 sm:px-6 lg:px-8 mx-auto"
 }) {
   const shouldReduceMotion = useReducedMotion();
 

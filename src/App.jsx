@@ -33,9 +33,12 @@ export default function App() {
     return !sessionStorage.getItem('has_booted_intro');
   });
 
+  const [hasCompletedIntro, setHasCompletedIntro] = useState(!showBootIntro);
+
   const handleBootComplete = () => {
     sessionStorage.setItem('has_booted_intro', 'true');
     setShowBootIntro(false);
+    setHasCompletedIntro(true);
   };
 
   useEffect(() => {
@@ -49,7 +52,7 @@ export default function App() {
   }, [showBootIntro]);
 
   return (
-    <div className="min-h-screen bg-[#F4F1EA] dark:bg-[#0D1117] text-slate-900 dark:text-[#F0F6FC] font-sans antialiased selection:bg-[#E8A33D] selection:text-[#0D1117] transition-colors">
+    <div className={`min-h-screen overflow-x-hidden bg-[#F4F1EA] dark:bg-[#0D1117] text-slate-900 dark:text-[#F0F6FC] font-sans antialiased selection:bg-[#E8A33D] selection:text-[#0D1117] transition-colors ${hasCompletedIntro ? 'animate-portfolio-in' : ''}`}>
       
       {/* 1. Terminal Boot Intro (plays once per session) */}
       {showBootIntro && (
@@ -66,7 +69,7 @@ export default function App() {
 
       {/* 3. Main Stream */}
       <main>
-        <Hero onOpenContact={() => setIsContactOpen(true)} />
+        <Hero />
         <Journey />
         <Projects />
         <TechFoundations />

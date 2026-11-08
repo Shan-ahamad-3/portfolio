@@ -6,13 +6,13 @@ export default function Volunteering() {
   return (
     <Section 
       id="volunteering" 
-      title="Civic Leadership" 
+      title="Volunteering Leadership" 
       subtitle="Large-scale public event cohort leadership, crowd orientation, and rapid incident coordination."
     >
       <div className="space-y-6">
         
-        {/* Open Metrics Banner across 3 wide columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        {/* Open Metrics Banner: 1 col on mobile, 2 cols on tablet, 3 cols on desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {volunteering.metrics.map((metric, idx) => (
             <div 
               key={idx} 

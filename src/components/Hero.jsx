@@ -1,23 +1,23 @@
-import { FiGithub, FiLinkedin, FiArrowRight } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 import { profile } from '../data/resume';
 
 export default function Hero() {
   return (
     <section className="py-16 md:py-20 relative">
-      <div className="max-w-6xl px-6 md:px-12 mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-center">
+      <div className="max-w-6xl px-4 sm:px-6 lg:px-8 mx-auto">
+        <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 lg:gap-14">
           
-          {/* Left Column (7 cols): Direct, confident developer narrative */}
-          <div className="md:col-span-7 space-y-6 text-center md:text-left">
+          {/* Text & Action Column: Stacked & centered on mobile/tablets, left-aligned on desktop (lg:text-left) */}
+          <div className="flex-1 space-y-6 text-center lg:text-left">
             
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-mono bg-[#EFE9DC] dark:bg-[#14181E] border border-[#D8D1C2] dark:border-[#2A303A] text-[#525B64] dark:text-[#8E98A5]">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono bg-slate-200/70 dark:bg-slate-900/80 border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-zinc-300">
               <span className="w-2 h-2 rounded-full bg-[#C77D2B]" />
               <span>{profile.location} • Available for Data & Software Roles</span>
             </div>
 
             {/* Legal Name (strictly Md. Zeeshan Ahamad) & Exact Subtitle */}
             <div className="space-y-2">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-slate-900 dark:text-[#ECEFF4]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-[#ECEFF4]">
                 {profile.name}
               </h1>
               <p className="text-lg sm:text-xl font-semibold text-[#C77D2B] font-mono">
@@ -26,61 +26,51 @@ export default function Hero() {
             </div>
 
             {/* Confident Developer Narrative */}
-            <p className="text-base md:text-lg text-slate-700 dark:text-zinc-300 leading-relaxed max-w-2xl">
+            <p className="text-base md:text-lg text-slate-700 dark:text-zinc-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               Computer Science graduate specializing in Python data engineering, automated ETL hygiene, and high-performance analytical pipelines. Hands-on experience developing vectorized outlier scrubbing routines with Pandas and architecting responsive web applications with precision viewport scaling.
             </p>
 
-            {/* Retain only a single, clean primary CTA button */}
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
-              <a
-                href="#projects"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#C77D2B] hover:bg-[#AF6A20] text-[#0B0E11] font-bold text-sm font-mono transition-colors shadow-sm"
-              >
-                <span>Explore Work</span>
-                <FiArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-
-            {/* Direct Social Links */}
-            <div className="flex items-center justify-center md:justify-start gap-4 pt-1 text-slate-600 dark:text-zinc-400 text-sm font-mono">
+            {/* Action Buttons: LinkedIn, GitHub, and Email only with dark slate card style and sleek amber accents */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
               <a
                 href={profile.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-[#C77D2B] flex items-center gap-1.5 transition-colors"
+                className="inline-flex items-center gap-2.5 px-4.5 py-2.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-amber-500/50 text-slate-200 hover:text-amber-400 font-mono text-sm font-medium transition-all duration-200 shadow-sm hover:-translate-y-0.5 group"
               >
-                <FiLinkedin className="w-4 h-4" />
+                <FiLinkedin className="w-4 h-4 text-amber-500 group-hover:scale-110 transition-transform" />
                 <span>LinkedIn</span>
               </a>
-              <span>•</span>
+
               <a
                 href={profile.github}
                 target="_blank"
                 rel="noreferrer"
-                className="hover:text-[#C77D2B] flex items-center gap-1.5 transition-colors"
+                className="inline-flex items-center gap-2.5 px-4.5 py-2.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-amber-500/50 text-slate-200 hover:text-amber-400 font-mono text-sm font-medium transition-all duration-200 shadow-sm hover:-translate-y-0.5 group"
               >
-                <FiGithub className="w-4 h-4" />
+                <FiGithub className="w-4 h-4 text-amber-500 group-hover:scale-110 transition-transform" />
                 <span>GitHub</span>
               </a>
-              <span>•</span>
+
               <a
                 href={`mailto:${profile.email}`}
-                className="hover:text-[#C77D2B] flex items-center gap-1.5 transition-colors"
+                className="inline-flex items-center gap-2.5 px-4.5 py-2.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-amber-500/50 text-slate-200 hover:text-amber-400 font-mono text-sm font-medium transition-all duration-200 shadow-sm hover:-translate-y-0.5 group"
               >
+                <FiMail className="w-4 h-4 text-amber-500 group-hover:scale-110 transition-transform" />
                 <span>{profile.email}</span>
               </a>
             </div>
 
           </div>
 
-          {/* Right Column (5 cols): Generously Sized Headshot with Soft Glow */}
-          <div className="md:col-span-5 flex justify-center md:justify-end">
+          {/* Profile Image Column: Fluidly scaled image container (w-44 h-44 sm:w-60 sm:h-60 lg:w-72 lg:h-72) */}
+          <div className="shrink-0 flex justify-center">
             <div className="relative group">
-              <div className="absolute -inset-1 rounded-3xl bg-amber-500/10 dark:bg-amber-500/15 blur-xl group-hover:bg-amber-500/20 transition-all" />
+              <div className="absolute -inset-1.5 rounded-3xl bg-amber-500/10 dark:bg-amber-500/20 blur-xl group-hover:bg-amber-500/30 transition-all duration-300" />
               <img
                 src={profile.photo}
                 alt="Md. Zeeshan Ahamad"
-                className="relative w-64 md:w-80 h-auto aspect-square object-cover object-center rounded-2xl ring-1 ring-amber-500/20 shadow-2xl transition-transform duration-300 group-hover:scale-[1.01]"
+                className="relative w-44 h-44 sm:w-60 sm:h-60 lg:w-72 lg:h-72 object-cover object-center rounded-2xl ring-1 ring-amber-500/20 shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]"
               />
             </div>
           </div>
