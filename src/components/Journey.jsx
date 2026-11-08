@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, useScroll, useReducedMotion } from 'framer-motion';
-import { FiCalendar, FiAward } from 'react-icons/fi';
+import { FiCalendar } from 'react-icons/fi';
 import Section from './ui/Section';
 import Card from './ui/Card';
 import { education } from '../data/resume';
@@ -149,18 +149,11 @@ export default function Journey() {
                       ? "border-amber-500/30 dark:border-amber-500/20 shadow-sm"
                       : "border-slate-200 dark:border-zinc-800 shadow-xs"
                 }`}>
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 dark:border-zinc-800 pb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div className="space-y-1">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-[#C77D2B] uppercase tracking-wide">
-                          {item.stage}
-                        </span>
-                        {isTerminus && (
-                          <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-[#C77D2B]/15 text-[#C77D2B] font-bold border border-[#C77D2B]/30">
-                            FINAL DESTINATION / TERMINUS
-                          </span>
-                        )}
-                      </div>
+                      <span className="text-xs font-bold text-[#C77D2B] uppercase tracking-wide">
+                        {item.stage}
+                      </span>
                       <h3 className="text-lg md:text-xl font-bold font-sans text-slate-900 dark:text-[#ECEFF4]">
                         {item.school}
                       </h3>
@@ -178,15 +171,6 @@ export default function Journey() {
                         {item.detail}
                       </span>
                     </div>
-                  </div>
-
-                  <div className="text-xs md:text-sm text-slate-600 dark:text-zinc-400 font-sans pt-3 flex items-center gap-2">
-                    <FiAward className="w-4 h-4 text-[#C77D2B] shrink-0" />
-                    <span>
-                      {isTerminus 
-                        ? "Graduated with 80% aggregate and peak 9.00 SGPA in the final semester. Specialized in Python, relational databases, data structures, and computer networks." 
-                        : "Verified academic qualification record."}
-                    </span>
                   </div>
                 </Card>
               </div>
