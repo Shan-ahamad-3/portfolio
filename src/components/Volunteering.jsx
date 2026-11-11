@@ -28,7 +28,7 @@ export default function Volunteering() {
               key={idx} 
               className="bg-white dark:bg-[#14181E] border border-slate-200 dark:border-[#2A303A] rounded-2xl p-6 space-y-2 shadow-xs transition-transform hover:-translate-y-0.5"
             >
-              <div className="font-mono text-xs uppercase text-[#C77D2B] font-bold tracking-wider">
+              <div className="font-mono text-xs uppercase theme-accent font-bold tracking-wider">
                 {metric.label}
               </div>
               <div className="text-3xl md:text-4xl font-bold font-mono text-slate-900 dark:text-[#ECEFF4]">
@@ -47,7 +47,7 @@ export default function Volunteering() {
               <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-[#ECEFF4]">
                 {volunteering.org}
               </h3>
-              <div className="text-sm font-mono text-[#C77D2B] font-semibold mt-0.5">
+              <div className="text-sm font-mono theme-accent font-semibold mt-0.5">
                 {volunteering.role}
               </div>
             </div>
@@ -69,12 +69,12 @@ export default function Volunteering() {
                       key={i}
                       style={{ zIndex: zIndexDefault }}
                       onClick={() => setSelectedImg(photo)}
-                      className={`relative z-30 transition-all duration-300 ease-out ${defaultRotation} group-hover:space-x-3 group-hover:rotate-0 hover:!scale-[2.4] sm:hover:!scale-[2.8] hover:!z-50 hover:shadow-2xl hover:border-amber-400 rounded-xl`}
+                      className={`relative z-30 transition-all duration-300 ease-out ${defaultRotation} group-hover:space-x-3 group-hover:rotate-0 hover:!scale-[2.4] sm:hover:!scale-[2.8] hover:!z-50 hover:shadow-2xl rounded-xl`}
                     >
                       <img
                         src={photo.src}
                         alt={photo.alt}
-                        className="w-14 h-10 sm:w-16 sm:h-12 object-cover rounded-lg border-2 border-slate-800 shadow-md transition-all duration-300"
+                        className="w-14 h-10 sm:w-16 sm:h-12 object-cover rounded-lg border-2 border-slate-800 shadow-md transition-all duration-300 hover:border-[var(--accent)]"
                         onError={(e) => {
                           e.currentTarget.src = '/images/headshot.jpg';
                         }}
@@ -137,7 +137,7 @@ export default function Volunteering() {
 
               <div className="p-4 bg-zinc-900 border-t border-zinc-800 flex items-center justify-between text-xs font-mono text-zinc-300">
                 <span>Vizag Volunteers • Event Operations</span>
-                <span className="text-amber-500 font-bold">2024 - Present</span>
+                <span className="theme-accent font-bold">2024 - Present</span>
               </div>
             </motion.div>
           </motion.div>

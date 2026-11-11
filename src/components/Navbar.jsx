@@ -25,13 +25,13 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenContac
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-[#F6F1E7]/95 dark:bg-[#0B0E11]/95 backdrop-blur-md border-b border-slate-200 dark:border-[#2A303A] transition-colors">
+    <header className="sticky top-0 z-40 bg-[var(--bg-canvas)]/90 backdrop-blur-md border-b border-[var(--border-card)] transition-colors">
       <div className="w-full px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         
         {/* Full Legal Name anchored neatly to the far left edge */}
         <a 
           href="#" 
-          className="font-bold text-base sm:text-lg text-slate-900 dark:text-[#ECEFF4] tracking-tight hover:text-[#C77D2B] transition-colors whitespace-nowrap"
+          className="font-bold text-base sm:text-lg text-slate-900 dark:text-[#ECEFF4] tracking-tight hover:text-[var(--accent)] transition-colors whitespace-nowrap"
         >
           {profile.name}
         </a>
@@ -48,7 +48,7 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenContac
                 href={link.href}
                 className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors whitespace-nowrap ${
                   isActive
-                    ? 'text-[#C77D2B] font-bold bg-[#EFE9DC] dark:bg-[#14181E] border border-[#C77D2B]/40'
+                    ? 'theme-accent font-bold bg-[var(--accent-muted)] border border-[var(--accent-border)]'
                     : 'text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
@@ -63,7 +63,7 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenContac
           <button
             onClick={handleContactClick}
             type="button"
-            className="px-4 py-2 rounded-lg text-xs font-mono font-medium text-slate-900 dark:text-[#ECEFF4] border border-slate-300 dark:border-[#2A303A] hover:border-[#C77D2B] hover:text-[#C77D2B] transition-colors cursor-pointer whitespace-nowrap shadow-xs"
+            className="px-4 py-2 rounded-lg text-xs font-mono font-medium text-slate-900 dark:text-[#ECEFF4] border border-slate-300 dark:border-[#2A303A] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors cursor-pointer whitespace-nowrap shadow-xs"
           >
             Contact
           </button>
@@ -73,7 +73,7 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenContac
             href={profile.resumeFile}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-mono font-bold bg-[#C77D2B] hover:bg-[#AF6A20] text-[#0B0E11] transition-colors whitespace-nowrap shadow-xs"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-mono font-bold theme-accent-bg text-[#090a0f] transition-all whitespace-nowrap shadow-xs hover:opacity-90"
             title="Download verified resume (PDF)"
           >
             <FiFileText className="w-3.5 h-3.5" />
@@ -108,13 +108,13 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenContac
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-200 dark:border-[#2A303A] bg-[#F6F1E7] dark:bg-[#0B0E11] px-6 py-4 space-y-2">
+        <div className="md:hidden border-b border-[var(--border-card)] bg-[var(--bg-canvas)] px-6 py-4 space-y-2">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
               onClick={handleNavClick}
-              className="block px-3 py-2 rounded-md text-sm font-mono text-slate-700 dark:text-zinc-300 hover:bg-[#EFE9DC] dark:hover:bg-[#181D24] hover:text-[#C77D2B] transition-colors"
+              className="block px-3 py-2 rounded-md text-sm font-mono text-slate-700 dark:text-zinc-300 hover:bg-[var(--accent-muted)] hover:text-[var(--accent)] transition-colors"
             >
               {link.label}
             </a>
@@ -125,7 +125,7 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenContac
               target="_blank"
               rel="noreferrer"
               onClick={handleNavClick}
-              className="flex items-center justify-center gap-2 py-2.5 rounded-lg bg-[#C77D2B] text-[#0B0E11] font-bold font-mono text-xs"
+              className="flex items-center justify-center gap-2 py-2.5 rounded-lg theme-accent-bg text-[#090a0f] font-bold font-mono text-xs"
             >
               <FiFileText className="w-4 h-4" />
               <span>Download Resume (PDF)</span>

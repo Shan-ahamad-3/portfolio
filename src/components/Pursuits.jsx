@@ -29,8 +29,8 @@ export default function Pursuits() {
             <div className="absolute h-full w-[1px] bg-slate-200 dark:border-zinc-800 pointer-events-none" />
 
             {/* Core Center Axis */}
-            <div className="relative z-10 w-20 h-20 rounded-2xl bg-white dark:bg-[#0B0E11] border-2 border-[#C77D2B] flex flex-col items-center justify-center shadow-lg">
-              <span className="text-[10px] text-[#C77D2B] font-bold tracking-widest uppercase">DIAL</span>
+            <div className="relative z-10 w-20 h-20 rounded-2xl bg-white dark:bg-[#0B0E11] border-2 theme-accent-border flex flex-col items-center justify-center shadow-lg">
+              <span className="text-[10px] theme-accent font-bold tracking-widest uppercase">DIAL</span>
               <span className="text-xs font-bold text-slate-800 dark:text-zinc-200">{activeDir}</span>
             </div>
 
@@ -41,8 +41,8 @@ export default function Pursuits() {
               type="button"
               className={`absolute top-6 left-6 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer z-20 shadow-md ${
                 activeDir === "NW"
-                  ? "bg-[#C77D2B] text-[#0B0E11] font-bold scale-105 ring-4 ring-amber-500/20"
-                  : "bg-white dark:bg-[#14181E] text-slate-800 dark:text-[#ECEFF4] border border-slate-200 dark:border-[#2A303A] hover:border-[#C77D2B]"
+                  ? "theme-accent-bg text-[#090a0f] font-bold scale-105 shadow-lg"
+                  : "bg-white dark:bg-[#14181E] text-slate-800 dark:text-[#ECEFF4] border border-slate-200 dark:border-[#2A303A] hover:border-[var(--accent)]"
               }`}
             >
               Northwest • Chess
@@ -55,8 +55,8 @@ export default function Pursuits() {
               type="button"
               className={`absolute top-6 right-6 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer z-20 shadow-md ${
                 activeDir === "NE"
-                  ? "bg-[#C77D2B] text-[#0B0E11] font-bold scale-105 ring-4 ring-amber-500/20"
-                  : "bg-white dark:bg-[#14181E] text-slate-800 dark:text-[#ECEFF4] border border-slate-200 dark:border-[#2A303A] hover:border-[#C77D2B]"
+                  ? "theme-accent-bg text-[#090a0f] font-bold scale-105 shadow-lg"
+                  : "bg-white dark:bg-[#14181E] text-slate-800 dark:text-[#ECEFF4] border border-slate-200 dark:border-[#2A303A] hover:border-[var(--accent)]"
               }`}
             >
               Northeast • Karate
@@ -69,8 +69,8 @@ export default function Pursuits() {
               type="button"
               className={`absolute bottom-6 left-6 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer z-20 shadow-md ${
                 activeDir === "SW"
-                  ? "bg-[#C77D2B] text-[#0B0E11] font-bold scale-105 ring-4 ring-amber-500/20"
-                  : "bg-white dark:bg-[#14181E] text-slate-800 dark:text-[#ECEFF4] border border-slate-200 dark:border-[#2A303A] hover:border-[#C77D2B]"
+                  ? "theme-accent-bg text-[#090a0f] font-bold scale-105 shadow-lg"
+                  : "bg-white dark:bg-[#14181E] text-slate-800 dark:text-[#ECEFF4] border border-slate-200 dark:border-[#2A303A] hover:border-[var(--accent)]"
               }`}
             >
               Southwest • Badminton
@@ -83,8 +83,8 @@ export default function Pursuits() {
               type="button"
               className={`absolute bottom-6 right-6 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer z-20 shadow-md ${
                 activeDir === "SE"
-                  ? "bg-[#C77D2B] text-[#0B0E11] font-bold scale-105 ring-4 ring-amber-500/20"
-                  : "bg-white dark:bg-[#14181E] text-slate-800 dark:text-[#ECEFF4] border border-slate-200 dark:border-[#2A303A] hover:border-[#C77D2B]"
+                  ? "theme-accent-bg text-[#090a0f] font-bold scale-105 shadow-lg"
+                  : "bg-white dark:bg-[#14181E] text-slate-800 dark:text-[#ECEFF4] border border-slate-200 dark:border-[#2A303A] hover:border-[var(--accent)]"
               }`}
             >
               Southeast • Literature
@@ -98,7 +98,7 @@ export default function Pursuits() {
             
             <div className="flex items-center justify-between border-b border-slate-200 dark:border-[#2A303A] pb-4">
               <div>
-                <span className="text-xs font-mono font-bold uppercase text-[#C77D2B]">
+                <span className="text-xs font-mono font-bold uppercase theme-accent">
                   {selected.direction} Coordinate
                 </span>
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-[#ECEFF4]">
@@ -120,7 +120,7 @@ export default function Pursuits() {
             </div>
 
             <div className="space-y-2">
-              <div className="text-sm font-mono font-bold text-[#C77D2B]">
+              <div className="text-sm font-mono font-bold theme-accent">
                 {selected.tagline}
               </div>
               <p className="text-sm md:text-base text-slate-700 dark:text-zinc-300 leading-relaxed font-sans">

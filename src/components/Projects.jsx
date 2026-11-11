@@ -48,13 +48,13 @@ export default function Projects() {
               <button
                 onClick={() => toggleBlock('rawData')}
                 type="button"
-                className="w-full p-5 flex items-center justify-between text-left hover:text-[#C77D2B] transition-colors cursor-pointer"
+                className="w-full p-5 flex items-center justify-between text-left hover:text-[var(--accent)] transition-colors cursor-pointer"
               >
                 <span className="text-sm md:text-base font-semibold text-slate-900 dark:text-[#ECEFF4] flex items-center gap-3">
-                  <FiLayers className="w-5 h-5 text-[#C77D2B]" />
+                  <FiLayers className="w-5 h-5 theme-accent" />
                   <span>1. Raw Data — Tabular Schema & Record Counters</span>
                 </span>
-                <FiChevronDown className={`w-5 h-5 transition-transform ${expandedBlock === 'rawData' ? 'rotate-180 text-[#C77D2B]' : 'text-slate-400 dark:text-zinc-500'}`} />
+                <FiChevronDown className={`w-5 h-5 transition-transform ${expandedBlock === 'rawData' ? 'rotate-180 theme-accent' : 'text-slate-400 dark:text-zinc-500'}`} />
               </button>
 
               <AnimatePresence>
@@ -67,7 +67,7 @@ export default function Projects() {
                   >
                     <div className="p-4 rounded-lg bg-white dark:bg-[#14181E] border border-slate-200 dark:border-zinc-800 space-y-4">
                       <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-slate-200 dark:border-zinc-800 text-xs">
-                        <span className="font-bold text-[#C77D2B]">{internship.blocks.rawData.title}</span>
+                        <span className="font-bold theme-accent">{internship.blocks.rawData.title}</span>
                         <span className="px-2.5 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/20">
                           {internship.blocks.rawData.records}
                         </span>
@@ -86,7 +86,7 @@ export default function Projects() {
                             {internship.blocks.rawData.schema.map((row, idx) => (
                               <tr key={idx} className="hover:bg-slate-50 dark:hover:bg-zinc-800/30">
                                 <td className="py-2.5 font-bold text-slate-800 dark:text-zinc-200">{row.field}</td>
-                                <td className="py-2.5 text-[#C77D2B]">{row.type}</td>
+                                <td className="py-2.5 theme-accent">{row.type}</td>
                                 <td className="py-2.5 text-slate-600 dark:text-zinc-400">{row.note}</td>
                               </tr>
                             ))}
@@ -104,13 +104,13 @@ export default function Projects() {
               <button
                 onClick={() => toggleBlock('stack')}
                 type="button"
-                className="w-full p-5 flex items-center justify-between text-left hover:text-[#C77D2B] transition-colors cursor-pointer"
+                className="w-full p-5 flex items-center justify-between text-left hover:text-[var(--accent)] transition-colors cursor-pointer"
               >
                 <span className="text-sm md:text-base font-semibold text-slate-900 dark:text-[#ECEFF4] flex items-center gap-3">
-                  <FiTerminal className="w-5 h-5 text-[#C77D2B]" />
+                  <FiTerminal className="w-5 h-5 theme-accent" />
                   <span>2. Stack Used — Clean Python/Pandas Vectorized Snippet</span>
                 </span>
-                <FiChevronDown className={`w-5 h-5 transition-transform ${expandedBlock === 'stack' ? 'rotate-180 text-[#C77D2B]' : 'text-slate-400 dark:text-zinc-500'}`} />
+                <FiChevronDown className={`w-5 h-5 transition-transform ${expandedBlock === 'stack' ? 'rotate-180 theme-accent' : 'text-slate-400 dark:text-zinc-500'}`} />
               </button>
 
               <AnimatePresence>
@@ -134,13 +134,13 @@ export default function Projects() {
               <button
                 onClick={() => toggleBlock('results')}
                 type="button"
-                className="w-full p-5 flex items-center justify-between text-left hover:text-[#C77D2B] transition-colors cursor-pointer"
+                className="w-full p-5 flex items-center justify-between text-left hover:text-[var(--accent)] transition-colors cursor-pointer"
               >
                 <span className="text-sm md:text-base font-semibold text-slate-900 dark:text-[#ECEFF4] flex items-center gap-3">
-                  <FiTrendingUp className="w-5 h-5 text-[#C77D2B]" />
+                  <FiTrendingUp className="w-5 h-5 theme-accent" />
                   <span>3. Results — Quantitative Outcomes & Attendance Distributions</span>
                 </span>
-                <FiChevronDown className={`w-5 h-5 transition-transform ${expandedBlock === 'results' ? 'rotate-180 text-[#C77D2B]' : 'text-slate-400 dark:text-zinc-500'}`} />
+                <FiChevronDown className={`w-5 h-5 transition-transform ${expandedBlock === 'results' ? 'rotate-180 theme-accent' : 'text-slate-400 dark:text-zinc-500'}`} />
               </button>
 
               <AnimatePresence>
@@ -152,7 +152,7 @@ export default function Projects() {
                     className="px-5 pb-5 pt-1 border-t border-slate-200 dark:border-zinc-800"
                   >
                     <div className="p-5 rounded-lg bg-white dark:bg-[#14181E] border border-slate-200 dark:border-zinc-800 space-y-4">
-                      <div className="font-bold text-[#C77D2B] text-sm">
+                      <div className="font-bold theme-accent text-sm">
                         {internship.blocks.results.headline}
                       </div>
 
@@ -205,7 +205,7 @@ export default function Projects() {
               href={webProject.liveUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#C77D2B] hover:bg-[#AF6A20] text-[#0B0E11] font-bold transition-colors shadow-sm"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg theme-accent-bg text-[#090a0f] font-bold transition-all shadow-sm hover:opacity-90"
             >
               <FiExternalLink className="w-4 h-4" />
               <span>[ Live Deployment ]</span>
@@ -215,7 +215,7 @@ export default function Projects() {
               href={webProject.repoUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white dark:bg-[#181D24] text-slate-900 dark:text-[#ECEFF4] border border-slate-300 dark:border-[#2A303A] hover:border-[#C77D2B] font-semibold transition-colors shadow-xs"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white dark:bg-[#181D24] text-slate-900 dark:text-[#ECEFF4] border border-slate-300 dark:border-[#2A303A] hover:border-[var(--accent)] font-semibold transition-colors shadow-xs"
             >
               <FiGithub className="w-4 h-4" />
               <span>[ Source Repository ]</span>

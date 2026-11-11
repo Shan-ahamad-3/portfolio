@@ -11,7 +11,7 @@ export default function Hero() {
           <div className="flex-1 space-y-6 text-center lg:text-left">
             
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-mono bg-slate-200/70 dark:bg-slate-900/80 border border-slate-300 dark:border-slate-800 text-slate-700 dark:text-zinc-300">
-              <span className="w-2 h-2 rounded-full bg-[#C77D2B]" />
+              <span className="w-2 h-2 rounded-full theme-accent-bg" />
               <span>{profile.location} • Available for Data & Software Roles</span>
             </div>
 
@@ -20,7 +20,7 @@ export default function Hero() {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-[#ECEFF4]">
                 {profile.name}
               </h1>
-              <p className="text-lg sm:text-xl font-semibold text-[#C77D2B] font-mono">
+              <p className="text-lg sm:text-xl font-semibold theme-accent font-mono">
                 {profile.title}
               </p>
             </div>
@@ -30,15 +30,15 @@ export default function Hero() {
               Computer Science graduate specializing in Python data engineering, automated ETL hygiene, and high-performance analytical pipelines. Hands-on experience developing vectorized outlier scrubbing routines with Pandas and architecting responsive web applications with precision viewport scaling.
             </p>
 
-            {/* Action Buttons: LinkedIn, GitHub, and Email only with dark slate card style and sleek amber accents */}
+            {/* Action Buttons: LinkedIn, GitHub, and Email with dynamic theme accent support */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
               <a
                 href={profile.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2.5 px-4.5 py-2.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-amber-500/50 text-slate-200 hover:text-amber-400 font-mono text-sm font-medium transition-all duration-200 shadow-sm hover:-translate-y-0.5 group"
+                className="inline-flex items-center gap-2.5 px-4.5 py-2.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-[var(--accent)] text-slate-200 hover:text-[var(--accent)] font-mono text-sm font-medium transition-all duration-200 shadow-sm hover:-translate-y-0.5 group"
               >
-                <FiLinkedin className="w-4 h-4 text-amber-500 group-hover:scale-110 transition-transform" />
+                <FiLinkedin className="w-4 h-4 theme-accent group-hover:scale-110 transition-transform" />
                 <span>LinkedIn</span>
               </a>
 
@@ -46,17 +46,17 @@ export default function Hero() {
                 href={profile.github}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2.5 px-4.5 py-2.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-amber-500/50 text-slate-200 hover:text-amber-400 font-mono text-sm font-medium transition-all duration-200 shadow-sm hover:-translate-y-0.5 group"
+                className="inline-flex items-center gap-2.5 px-4.5 py-2.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-[var(--accent)] text-slate-200 hover:text-[var(--accent)] font-mono text-sm font-medium transition-all duration-200 shadow-sm hover:-translate-y-0.5 group"
               >
-                <FiGithub className="w-4 h-4 text-amber-500 group-hover:scale-110 transition-transform" />
+                <FiGithub className="w-4 h-4 theme-accent group-hover:scale-110 transition-transform" />
                 <span>GitHub</span>
               </a>
 
               <a
                 href={`mailto:${profile.email}`}
-                className="inline-flex items-center gap-2.5 px-4.5 py-2.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-amber-500/50 text-slate-200 hover:text-amber-400 font-mono text-sm font-medium transition-all duration-200 shadow-sm hover:-translate-y-0.5 group"
+                className="inline-flex items-center gap-2.5 px-4.5 py-2.5 rounded-xl bg-slate-900/80 border border-slate-800 hover:border-[var(--accent)] text-slate-200 hover:text-[var(--accent)] font-mono text-sm font-medium transition-all duration-200 shadow-sm hover:-translate-y-0.5 group"
               >
-                <FiMail className="w-4 h-4 text-amber-500 group-hover:scale-110 transition-transform" />
+                <FiMail className="w-4 h-4 theme-accent group-hover:scale-110 transition-transform" />
                 <span>{profile.email}</span>
               </a>
             </div>
@@ -66,11 +66,15 @@ export default function Hero() {
           {/* Profile Image Column: Fluidly scaled image container (w-44 h-44 sm:w-60 sm:h-60 lg:w-72 lg:h-72) */}
           <div className="shrink-0 flex justify-center">
             <div className="relative group">
-              <div className="absolute -inset-1.5 rounded-3xl bg-amber-500/10 dark:bg-amber-500/20 blur-xl group-hover:bg-amber-500/30 transition-all duration-300" />
+              <div 
+                className="absolute -inset-1.5 rounded-3xl opacity-20 blur-xl group-hover:opacity-35 transition-all duration-300"
+                style={{ backgroundColor: 'var(--accent)' }}
+              />
               <img
                 src={profile.photo}
                 alt="Md. Zeeshan Ahamad"
-                className="relative w-44 h-44 sm:w-60 sm:h-60 lg:w-72 lg:h-72 object-cover object-center rounded-2xl ring-1 ring-amber-500/20 shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]"
+                className="relative w-44 h-44 sm:w-60 sm:h-60 lg:w-72 lg:h-72 object-cover object-center rounded-2xl shadow-2xl transition-transform duration-300 group-hover:scale-[1.02] border"
+                style={{ borderColor: 'var(--accent-border)' }}
               />
             </div>
           </div>

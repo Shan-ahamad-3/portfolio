@@ -23,7 +23,7 @@ function TrainLocomotive({ className = "w-6 h-6" }) {
       <circle cx="7" cy="19" r="1.5" fill="currentColor" />
       <circle cx="17" cy="19" r="1.5" fill="currentColor" />
       <path d="M12 4V2" />
-      <circle cx="12" cy="13" r="1" fill="#C77D2B" stroke="#C77D2B" />
+      <circle cx="12" cy="13" r="1" fill="var(--accent)" stroke="var(--accent)" />
     </svg>
   );
 }
@@ -108,7 +108,7 @@ export default function Journey() {
               <motion.div 
                 animate={{ height: activeTrackHeight }}
                 transition={{ type: "spring", stiffness: 120, damping: 20 }}
-                className="w-full bg-[#C77D2B] rounded-full"
+                className="w-full theme-accent-bg rounded-full"
               />
             )}
           </div>
@@ -122,8 +122,8 @@ export default function Journey() {
             transition={{ type: "spring", stiffness: 120, damping: 20 }}
             className="absolute left-4 sm:left-7 md:left-8 -translate-x-1/2 top-0 z-20 pointer-events-none -mt-4 flex flex-col items-center"
           >
-            <div className="p-1.5 rounded-md bg-white dark:bg-[#0B0E11] border-2 border-[#C77D2B] text-[#C77D2B] shadow-lg">
-              <TrainLocomotive className="w-5 h-5 text-[#C77D2B]" />
+            <div className="p-1.5 rounded-md bg-white dark:bg-[#0B0E11] border-2 theme-accent-border theme-accent shadow-lg">
+              <TrainLocomotive className="w-5 h-5 theme-accent" />
             </div>
           </motion.div>
         )}
@@ -142,16 +142,16 @@ export default function Journey() {
                 onMouseLeave={() => setActiveStation(null)}
                 className="relative"
               >
-                <Card className={`p-6 sm:p-7 rounded-xl border bg-white dark:bg-zinc-900/60 transition-all duration-300 ease-out cursor-default hover:-translate-y-1.5 hover:shadow-xl hover:shadow-amber-500/10 hover:border-amber-500/40 ${
+                <Card className={`p-6 sm:p-7 rounded-xl border bg-white dark:bg-zinc-900/60 transition-all duration-300 ease-out cursor-default hover:-translate-y-1.5 hover:shadow-xl hover:border-[var(--accent)] ${
                   isHovered
-                    ? "-translate-y-1.5 shadow-xl shadow-amber-500/10 border-amber-500/40"
+                    ? "-translate-y-1.5 shadow-xl border-[var(--accent)]"
                     : isTerminus
-                      ? "border-amber-500/30 dark:border-amber-500/20 shadow-sm"
+                      ? "border-[var(--accent-border)] shadow-sm"
                       : "border-slate-200 dark:border-zinc-800 shadow-xs"
                 }`}>
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                     <div className="space-y-1">
-                      <span className="text-xs font-bold text-[#C77D2B] uppercase tracking-wide">
+                      <span className="text-xs font-bold theme-accent uppercase tracking-wide">
                         {item.stage}
                       </span>
                       <h3 className="text-lg md:text-xl font-bold font-sans text-slate-900 dark:text-[#ECEFF4]">
@@ -164,7 +164,7 @@ export default function Journey() {
 
                     <div className="flex flex-wrap items-center gap-3 text-xs self-start sm:self-auto">
                       <span className="flex items-center gap-1.5 text-slate-500 dark:text-zinc-400">
-                        <FiCalendar className="w-3.5 h-3.5 text-[#C77D2B]" />
+                        <FiCalendar className="w-3.5 h-3.5 theme-accent" />
                         <span>{item.year}</span>
                       </span>
                       <span className="px-3 py-1 rounded-md bg-[#EFE9DC] dark:bg-[#181D24] text-slate-900 dark:text-[#ECEFF4] font-semibold border border-slate-300 dark:border-zinc-700">
