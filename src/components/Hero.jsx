@@ -11,14 +11,14 @@ export default function Hero() {
           {/* Left Column (lg:w-2/3): Identity strictly aligned to the left axis */}
           <div className="w-full lg:w-2/3 space-y-6 text-left">
             
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-mono bg-white/5 border border-white/10 text-slate-300">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-mono bg-white/5 border border-[var(--border-card)] text-[var(--text-secondary)]">
               <span className="w-2 h-2 rounded-full theme-accent-bg" />
               <span>{profile.location} • Available for Data & Software Roles</span>
             </div>
 
             {/* Strict Left-Aligned Identity Header & 1.25 Typography Scale */}
             <div className="space-y-3">
-              <h1 className="text-4xl sm:text-5xl lg:text-5xl font-bold tracking-tight text-[#F1F5F9] leading-tight font-heading">
+              <h1 className="text-4xl sm:text-5xl lg:text-5xl font-bold tracking-tight text-[var(--text-primary)] leading-tight font-heading">
                 {profile.name}
               </h1>
               <p className="text-lg sm:text-xl font-medium theme-accent font-mono leading-snug">
@@ -27,7 +27,7 @@ export default function Hero() {
             </div>
 
             {/* Confident Developer Narrative: 1.25 Scale text-base leading-relaxed */}
-            <p className="text-base text-[#94A3B8] leading-relaxed max-w-2xl">
+            <p className="text-base text-[var(--text-secondary)] leading-relaxed max-w-2xl">
               Computer Science graduate specializing in Python data engineering, automated ETL hygiene, and high-performance analytical pipelines. Hands-on experience developing vectorized outlier scrubbing routines with Pandas and architecting responsive web applications with precision viewport scaling.
             </p>
 
@@ -37,7 +37,7 @@ export default function Hero() {
                 href={profile.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 min-h-[44px] min-w-[44px] px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-[var(--accent)] text-[#F1F5F9] hover:text-[var(--accent)] font-mono text-sm font-medium transition-all duration-200 shadow-sm hover:-translate-y-0.5 group"
+                className="inline-flex items-center justify-center gap-2.5 min-h-[44px] min-w-[44px] px-5 py-2.5 rounded-xl bg-white/5 border border-[var(--border-card)] hover:border-[var(--accent)] text-[var(--text-primary)] hover:text-[var(--accent)] font-mono text-sm font-medium transition-all duration-200 shadow-sm hover:-translate-y-0.5 group"
               >
                 <FiLinkedin className="w-4 h-4 theme-accent group-hover:scale-110 transition-transform" />
                 <span>LinkedIn</span>
@@ -47,7 +47,7 @@ export default function Hero() {
                 href={profile.github}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 min-h-[44px] min-w-[44px] px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-[var(--accent)] text-[#F1F5F9] hover:text-[var(--accent)] font-mono text-sm font-medium transition-all duration-200 shadow-sm hover:-translate-y-0.5 group"
+                className="inline-flex items-center justify-center gap-2.5 min-h-[44px] min-w-[44px] px-5 py-2.5 rounded-xl bg-white/5 border border-[var(--border-card)] hover:border-[var(--accent)] text-[var(--text-primary)] hover:text-[var(--accent)] font-mono text-sm font-medium transition-all duration-200 shadow-sm hover:-translate-y-0.5 group"
               >
                 <FiGithub className="w-4 h-4 theme-accent group-hover:scale-110 transition-transform" />
                 <span>GitHub</span>
@@ -55,7 +55,7 @@ export default function Hero() {
 
               <a
                 href={`mailto:${profile.email}`}
-                className="inline-flex items-center justify-center gap-2.5 min-h-[44px] min-w-[44px] px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-[var(--accent)] text-[#F1F5F9] hover:text-[var(--accent)] font-mono text-sm font-medium transition-all duration-200 shadow-sm hover:-translate-y-0.5 group"
+                className="inline-flex items-center justify-center gap-2.5 min-h-[44px] min-w-[44px] px-5 py-2.5 rounded-xl bg-white/5 border border-[var(--border-card)] hover:border-[var(--accent)] text-[var(--text-primary)] hover:text-[var(--accent)] font-mono text-sm font-medium transition-all duration-200 shadow-sm hover:-translate-y-0.5 group"
               >
                 <FiMail className="w-4 h-4 theme-accent group-hover:scale-110 transition-transform" />
                 <span>{profile.email}</span>

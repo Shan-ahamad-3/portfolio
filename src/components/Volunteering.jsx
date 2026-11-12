@@ -31,7 +31,7 @@ export default function Volunteering() {
               <div className="font-mono text-xs uppercase theme-accent font-bold tracking-wider">
                 {metric.label}
               </div>
-              <div className="text-3xl md:text-4xl font-bold font-mono text-[#F1F5F9]">
+              <div className="text-3xl md:text-4xl font-bold font-mono text-[var(--text-primary)]">
                 {metric.value}
               </div>
             </div>
@@ -40,11 +40,11 @@ export default function Volunteering() {
 
         {/* Narrative Card: Silver Glass aesthetic, rounded-2xl outer container with p-6 sm:p-8 */}
         <Card className="p-6 sm:p-8 space-y-6 rounded-2xl overflow-visible">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-6 gap-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[var(--border-card)] pb-6 gap-6">
             
             {/* Left: Organization & Role */}
             <div className="space-y-1">
-              <h3 className="text-xl sm:text-2xl font-bold font-heading text-[#F1F5F9] leading-snug">
+              <h3 className="text-xl sm:text-2xl font-bold font-heading text-[var(--text-primary)] leading-snug">
                 {volunteering.org}
               </h3>
               <div className="text-sm font-mono theme-accent font-semibold">
@@ -74,7 +74,7 @@ export default function Volunteering() {
                       <img
                         src={photo.src}
                         alt={photo.alt}
-                        className="w-14 h-10 sm:w-16 sm:h-12 object-cover rounded-lg border-2 border-[#0F1115] shadow-md transition-all duration-300 hover:border-[var(--accent)]"
+                        className="w-14 h-10 sm:w-16 sm:h-12 object-cover rounded-lg border-2 border-[var(--border-card)] shadow-md transition-all duration-300 hover:border-[var(--accent)]"
                         onError={(e) => {
                           e.currentTarget.src = '/images/headshot.jpg';
                         }}
@@ -85,7 +85,7 @@ export default function Volunteering() {
               </div>
 
               {/* Text Date Badge: nested rounded-md element */}
-              <div className="text-xs font-mono text-[#94A3B8]">
+              <div className="text-xs font-mono text-[var(--text-secondary)]">
                 {volunteering.period}
               </div>
 
@@ -93,7 +93,7 @@ export default function Volunteering() {
 
           </div>
 
-          <p className="text-base text-[#94A3B8] leading-relaxed pt-1">
+          <p className="text-base text-[var(--text-secondary)] leading-relaxed pt-1">
             {volunteering.description}
           </p>
         </Card>
@@ -115,7 +115,7 @@ export default function Volunteering() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.92, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-3xl w-full bg-[#14171b] border border-white/10 rounded-2xl overflow-hidden shadow-2xl cursor-default"
+              className="relative max-w-3xl w-full bg-[var(--bg-canvas)] border border-[var(--border-card)] rounded-2xl overflow-hidden shadow-2xl cursor-default"
             >
               {/* Close Button with 44px touch target */}
               <button
@@ -135,8 +135,8 @@ export default function Volunteering() {
                 />
               </div>
 
-              <div className="p-4 bg-[#0F1115] border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-300">
-                <span>Vizag Volunteers • Event Operations</span>
+              <div className="p-4 bg-[var(--bg-card)] border-t border-[var(--border-card)] flex items-center justify-between text-xs font-mono text-[var(--text-secondary)]">
+                <span className="font-semibold text-[var(--text-primary)]">Vizag Volunteers • Event Operations</span>
                 <span className="theme-accent font-bold">2024 - Present</span>
               </div>
             </motion.div>

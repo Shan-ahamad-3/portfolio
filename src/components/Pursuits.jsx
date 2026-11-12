@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiX, FiCheckCircle } from 'react-icons/fi';
+import { FiX } from 'react-icons/fi';
 import { FaChessKnight, FaFistRaised } from 'react-icons/fa';
 import { GiShuttlecock, GiOpenBook } from 'react-icons/gi';
 
@@ -29,9 +29,9 @@ const clockNodes = [
     subtitle: 'Position: 03:00 • Discipline & Form',
     icon: FaFistRaised,
     image: '/images/pursuits/karate.jpg',
-    lead: 'Black Belt Practitioner in Shotokan Karate. Grounded in repetitive execution, physical conditioning, and rigorous martial discipline.',
+    lead: 'Brown Belt Dan 3 Practitioner in Shotokan Karate. Grounded in repetitive execution, physical conditioning, and rigorous martial discipline.',
     bullets: [
-      'Certified Black Belt Practitioner with competitive sparring experience',
+      'Certified Brown Belt Dan 3 Practitioner with competitive sparring experience',
       'Daily practice emphasizing kata precision, breath cadence, and posture control'
     ]
   },
@@ -110,14 +110,14 @@ export default function Pursuits() {
                   className="absolute inset-0 flex items-center justify-center pointer-events-none transition-transform duration-500 ease-out"
                   style={{ transform: `rotate(${activeNode.angle}deg)` }}
                 >
-                  <div className="w-0.5 h-1/2 bg-gradient-to-t from-transparent via-[#BAFF29]/60 to-[#BAFF29] -translate-y-1/2 rounded-full" />
+                  <div className="w-0.5 h-1/2 bg-gradient-to-t from-transparent via-[var(--accent)]/60 to-[var(--accent)] -translate-y-1/2 rounded-full" />
                 </div>
 
                 {/* Central Circular Hub (w-20 h-20 rounded-full) */}
-                <div className="relative z-10 w-20 h-20 rounded-full bg-[#030407] border-2 border-[var(--border-card)] flex flex-col items-center justify-center shadow-2xl">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#BAFF29] shadow-[0_0_12px_#BAFF29] animate-pulse mb-1" />
-                  <span className="text-[10px] tracking-widest font-bold text-[#F8FAFC]">DIAL</span>
-                  <span className="text-[10px] text-[#BAFF29] font-mono">{activeNode.hour}</span>
+                <div className="relative z-10 w-20 h-20 rounded-full bg-[var(--bg-card)] border-2 border-[var(--border-card)] flex flex-col items-center justify-center shadow-2xl">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent)] shadow-[0_0_12px_var(--accent)] animate-pulse mb-1" />
+                  <span className="text-[10px] tracking-widest font-bold text-[var(--text-primary)]">DIAL</span>
+                  <span className="text-[10px] text-[var(--accent)] font-mono">{activeNode.hour}</span>
                 </div>
 
                 {/* Cardinal Clock Node 1: Top (12:00 Chess) */}
@@ -127,8 +127,8 @@ export default function Pursuits() {
                   type="button"
                   className={`absolute top-2 left-1/2 -translate-x-1/2 min-h-[44px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer z-20 shadow-md ${
                     activeId === '12'
-                      ? 'bg-[#BAFF29] text-[#030407] font-bold scale-105 shadow-[0_0_16px_rgba(186,255,41,0.35)]'
-                      : 'bg-white/[0.04] text-[var(--text-primary)] border border-white/10 hover:border-[#BAFF29]/60'
+                      ? 'bg-[var(--accent)] text-[#030407] font-bold scale-105 shadow-[0_0_16px_var(--accent-muted)]'
+                      : 'bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] hover:border-[var(--accent)]/60'
                   }`}
                 >
                   12:00 Chess
@@ -141,8 +141,8 @@ export default function Pursuits() {
                   type="button"
                   className={`absolute right-0 top-1/2 -translate-y-1/2 min-h-[44px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer z-20 shadow-md ${
                     activeId === '03'
-                      ? 'bg-[#BAFF29] text-[#030407] font-bold scale-105 shadow-[0_0_16px_rgba(186,255,41,0.35)]'
-                      : 'bg-white/[0.04] text-[var(--text-primary)] border border-white/10 hover:border-[#BAFF29]/60'
+                      ? 'bg-[var(--accent)] text-[#030407] font-bold scale-105 shadow-[0_0_16px_var(--accent-muted)]'
+                      : 'bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] hover:border-[var(--accent)]/60'
                   }`}
                 >
                   03:00 Karate
@@ -155,8 +155,8 @@ export default function Pursuits() {
                   type="button"
                   className={`absolute bottom-2 left-1/2 -translate-x-1/2 min-h-[44px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer z-20 shadow-md ${
                     activeId === '06'
-                      ? 'bg-[#BAFF29] text-[#030407] font-bold scale-105 shadow-[0_0_16px_rgba(186,255,41,0.35)]'
-                      : 'bg-white/[0.04] text-[var(--text-primary)] border border-white/10 hover:border-[#BAFF29]/60'
+                      ? 'bg-[var(--accent)] text-[#030407] font-bold scale-105 shadow-[0_0_16px_var(--accent-muted)]'
+                      : 'bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] hover:border-[var(--accent)]/60'
                   }`}
                 >
                   06:00 Badminton
@@ -169,28 +169,23 @@ export default function Pursuits() {
                   type="button"
                   className={`absolute left-0 top-1/2 -translate-y-1/2 min-h-[44px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer z-20 shadow-md ${
                     activeId === '09'
-                      ? 'bg-[#BAFF29] text-[#030407] font-bold scale-105 shadow-[0_0_16px_rgba(186,255,41,0.35)]'
-                      : 'bg-white/[0.04] text-[var(--text-primary)] border border-white/10 hover:border-[#BAFF29]/60'
+                      ? 'bg-[var(--accent)] text-[#030407] font-bold scale-105 shadow-[0_0_16px_var(--accent-muted)]'
+                      : 'bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] hover:border-[var(--accent)]/60'
                   }`}
                 >
                   09:00 Literature
                 </button>
               </div>
-
-              {/* Centered Monospace Helper Caption */}
-              <p className="mt-4 text-xs font-mono text-[var(--text-secondary)] opacity-80 text-center">
-                • Hover or click dial nodes to rotate showcase
-              </p>
             </div>
 
             {/* Right Column (7 cols): Active Showcase Card (rounded-xl Inner Card) */}
             <div className="lg:col-span-7">
-              <div className="rounded-xl bg-white/[0.02] border border-white/10 p-6 sm:p-7 space-y-6 shadow-sm">
+              <div className="rounded-xl bg-[var(--bg-card)] border border-[var(--border-card)] p-6 sm:p-7 space-y-6 shadow-sm">
                 
                 {/* Top Header Row */}
-                <div className="flex items-center justify-between border-b border-white/10 pb-5 gap-4">
+                <div className="flex items-center justify-between border-b border-[var(--border-card)] pb-5 gap-4">
                   <div className="flex items-center gap-3.5">
-                    <div className="w-11 h-11 rounded-lg bg-[#BAFF29]/10 text-[#BAFF29] border border-[#BAFF29]/30 flex items-center justify-center shrink-0">
+                    <div className="w-11 h-11 rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/30 flex items-center justify-center shrink-0">
                       <IconComp className="w-5 h-5" />
                     </div>
                     <div>
@@ -204,7 +199,7 @@ export default function Pursuits() {
                   </div>
 
                   {/* Active Discipline Pill Badge */}
-                  <span className="px-3 py-1.5 rounded-full text-xs font-mono font-semibold bg-[#BAFF29]/10 text-[#BAFF29] border border-[#BAFF29]/30 shrink-0">
+                  <span className="px-3 py-1.5 rounded-full text-xs font-mono font-semibold bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/30 shrink-0">
                     Active Discipline
                   </span>
                 </div>
@@ -212,23 +207,16 @@ export default function Pursuits() {
                 {/* Inner Content Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                   
-                  {/* Photo Frame (rounded-lg) with Click to expand overlay */}
-                  <div className="md:col-span-5 relative group overflow-hidden rounded-lg border border-white/10 bg-black/40 shadow-md">
+                  {/* Photo Frame (rounded-lg) */}
+                  <div 
+                    onClick={() => setLightboxImg(activeNode)}
+                    className="md:col-span-5 relative group overflow-hidden rounded-lg border border-[var(--border-card)] bg-black/40 shadow-md cursor-pointer"
+                  >
                     <img
                       src={activeNode.image}
                       alt={activeNode.title}
                       className="w-full h-52 object-cover object-center transition-transform duration-500 group-hover:scale-105"
                     />
-                    
-                    {/* Interactive overlay bar */}
-                    <button
-                      onClick={() => setLightboxImg(activeNode)}
-                      type="button"
-                      className="absolute inset-x-0 bottom-0 py-2 px-3 bg-black/75 hover:bg-black/90 backdrop-blur-xs text-xs font-mono text-[#BAFF29] font-medium flex items-center justify-center gap-1.5 transition-all cursor-pointer opacity-90 group-hover:opacity-100"
-                    >
-                      <span>Click to expand</span>
-                      <span>↗</span>
-                    </button>
                   </div>
 
                   {/* Right Side: Lead summary & bullet points */}
@@ -240,22 +228,13 @@ export default function Pursuits() {
                     <ul className="space-y-2.5 text-xs sm:text-sm text-[var(--text-secondary)] font-sans">
                       {activeNode.bullets.map((bullet, idx) => (
                         <li key={idx} className="flex items-start gap-2.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#BAFF29] shrink-0 mt-1.5 shadow-[0_0_6px_#BAFF29]" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] shrink-0 mt-1.5 shadow-[0_0_6px_var(--accent)]" />
                           <span>{bullet}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                </div>
-
-                {/* Bottom Card Footer with thin border */}
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-[var(--text-secondary)]">
-                  <span className="flex items-center gap-1.5">
-                    <FiCheckCircle className="w-3.5 h-3.5 text-[#BAFF29]" />
-                    <span>Disciplined physical & intellectual composure</span>
-                  </span>
-                  <span className="font-semibold text-[var(--text-primary)]">Human Balance</span>
                 </div>
 
               </div>
@@ -281,7 +260,7 @@ export default function Pursuits() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.92, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-3xl w-full bg-[#030407] border border-white/15 rounded-2xl overflow-hidden shadow-2xl cursor-default"
+              className="relative max-w-3xl w-full bg-[var(--bg-canvas)] border border-[var(--border-card)] rounded-2xl overflow-hidden shadow-2xl cursor-default"
             >
               <button
                 onClick={() => setLightboxImg(null)}
@@ -300,11 +279,11 @@ export default function Pursuits() {
                 />
               </div>
 
-              <div className="p-4 bg-[#030407] border-t border-white/10 flex items-center justify-between text-xs font-mono text-[var(--text-secondary)]">
+              <div className="p-4 bg-[var(--bg-card)] border-t border-[var(--border-card)] flex items-center justify-between text-xs font-mono text-[var(--text-secondary)]">
                 <span className="font-semibold text-[var(--text-primary)]">
                   {lightboxImg.title} — {lightboxImg.subtitle}
                 </span>
-                <span className="text-[#BAFF29] font-bold">{lightboxImg.hour}</span>
+                <span className="text-[var(--accent)] font-bold">{lightboxImg.hour}</span>
               </div>
             </motion.div>
           </motion.div>

@@ -29,12 +29,12 @@ export default function Section({
         {(title || subtitle) && (
           <motion.div {...animationProps} className="mb-10 text-left space-y-2">
             {title && (
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-[#F0F6FC]">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
                 {title}
               </h2>
             )}
             {subtitle && (
-              <p className="text-sm md:text-base text-slate-600 dark:text-[#8B949E] max-w-3xl leading-relaxed">
+              <p className="text-sm md:text-base text-[var(--text-secondary)] max-w-3xl leading-relaxed">
                 {subtitle}
               </p>
             )}

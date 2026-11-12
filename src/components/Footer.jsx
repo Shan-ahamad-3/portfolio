@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="border-t border-[var(--border-card)] py-12 bg-[var(--bg-canvas)] transition-colors">
-      <div className="max-w-6xl px-6 md:px-12 mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-slate-500 dark:text-zinc-400">
+      <div className="max-w-6xl px-6 md:px-12 mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs text-[var(--text-secondary)]">
         <div>
           © 2026 Md. Zeeshan Ahamad. All rights reserved.
         </div>

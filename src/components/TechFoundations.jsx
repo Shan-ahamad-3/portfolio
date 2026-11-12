@@ -54,7 +54,7 @@ export default function TechFoundations() {
             key={item.category} 
             className="p-6 sm:p-8 space-y-6 rounded-2xl glass-card shadow-xs"
           >
-            <h3 className="font-mono text-xs theme-accent font-bold uppercase tracking-wider border-b border-white/10 pb-4">
+            <h3 className="font-mono text-xs theme-accent font-bold uppercase tracking-wider border-b border-[var(--border-card)] pb-4">
               {item.category}
             </h3>
 
@@ -62,7 +62,7 @@ export default function TechFoundations() {
               {item.skills.map((skill, idx) => (
                 <div
                   key={idx}
-                  className="w-full px-4 py-3 rounded-lg bg-white/[0.02] border border-white/10 text-slate-200 text-sm md:text-base font-medium tracking-wide hover:border-[var(--accent)] hover:bg-white/[0.05] transition-colors"
+                  className="w-full px-4 py-3 rounded-lg bg-[var(--bg-card)] border border-[var(--border-card)] text-[var(--text-primary)] text-sm md:text-base font-medium tracking-wide hover:border-[var(--accent)] hover:bg-[var(--accent-muted)] transition-colors"
                 >
                   {skill}
                 </div>

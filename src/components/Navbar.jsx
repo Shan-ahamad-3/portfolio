@@ -31,7 +31,7 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenContac
         {/* Full Legal Name anchored neatly to the far left edge */}
         <a 
           href="#" 
-          className="font-bold text-base sm:text-lg text-slate-900 dark:text-[#ECEFF4] tracking-tight hover:text-[var(--accent)] transition-colors whitespace-nowrap"
+          className="font-bold text-base sm:text-lg text-[var(--text-primary)] tracking-tight hover:text-[var(--accent)] transition-colors whitespace-nowrap"
         >
           {profile.name}
         </a>
@@ -49,7 +49,7 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenContac
                 className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-colors whitespace-nowrap ${
                   isActive
                     ? 'theme-accent font-bold bg-[var(--accent-muted)] border border-[var(--accent-border)]'
-                    : 'text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white'
+                    : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                 }`}
               >
                 {link.label}
@@ -57,13 +57,13 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenContac
             );
           })}
 
-          <div className="h-4 w-[1px] bg-slate-300 dark:bg-[#2A303A] mx-1" />
+          <div className="h-4 w-[1px] bg-[var(--border-card)] mx-1" />
 
           {/* Contact Button */}
           <button
             onClick={handleContactClick}
             type="button"
-            className="px-4 py-2 rounded-lg text-xs font-mono font-medium text-slate-900 dark:text-[#ECEFF4] border border-slate-300 dark:border-[#2A303A] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors cursor-pointer whitespace-nowrap shadow-xs"
+            className="px-4 py-2 rounded-lg text-xs font-mono font-medium text-[var(--text-primary)] border border-[var(--border-card)] hover:border-[var(--accent)] hover:text-[var(--accent)] transition-colors cursor-pointer whitespace-nowrap shadow-xs"
           >
             Contact
           </button>
@@ -88,7 +88,7 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenContac
           <button
             onClick={handleContactClick}
             type="button"
-            className="px-3 py-1.5 rounded-lg text-xs font-mono text-slate-900 dark:text-[#ECEFF4] border border-slate-300 dark:border-[#2A303A]"
+            className="px-3 py-1.5 rounded-lg text-xs font-mono text-[var(--text-primary)] border border-[var(--border-card)]"
           >
             Contact
           </button>
@@ -99,7 +99,7 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenContac
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             type="button"
             aria-label="Toggle navigation menu"
-            className="p-2 rounded-lg text-slate-600 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-[#181D24] transition-colors"
+            className="p-2 rounded-lg text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--accent-muted)] transition-colors"
           >
             {mobileMenuOpen ? <FiX className="w-5 h-5" /> : <FiMenu className="w-5 h-5" />}
           </button>
@@ -114,7 +114,7 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenContac
               key={link.label}
               href={link.href}
               onClick={handleNavClick}
-              className="block px-3 py-2 rounded-md text-sm font-mono text-slate-700 dark:text-zinc-300 hover:bg-[var(--accent-muted)] hover:text-[var(--accent)] transition-colors"
+              className="block px-3 py-2 rounded-md text-sm font-mono text-[var(--text-secondary)] hover:bg-[var(--accent-muted)] hover:text-[var(--accent)] transition-colors"
             >
               {link.label}
             </a>

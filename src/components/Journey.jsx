@@ -101,7 +101,7 @@ export default function Journey() {
               top: `${trackBounds.top}px`,
               height: `${trackBounds.height}px`
             }}
-            className="absolute left-4 sm:left-7 md:left-8 w-[3px] bg-white/10 rounded-full pointer-events-none"
+            className="absolute left-4 sm:left-7 md:left-8 w-[3px] bg-[var(--border-card)] rounded-full pointer-events-none"
           >
             {/* Animated active track fill */}
             {!shouldReduceMotion && (
@@ -122,7 +122,7 @@ export default function Journey() {
             transition={{ type: "spring", stiffness: 120, damping: 20 }}
             className="absolute left-4 sm:left-7 md:left-8 -translate-x-1/2 top-0 z-20 pointer-events-none -mt-4 flex flex-col items-center"
           >
-            <div className="p-1.5 rounded-lg bg-[#0F1115] border-2 theme-accent-border theme-accent shadow-lg">
+            <div className="p-1.5 rounded-lg bg-[var(--bg-card)] border-2 theme-accent-border theme-accent shadow-lg">
               <TrainLocomotive className="w-5 h-5 theme-accent" />
             </div>
           </motion.div>
@@ -154,20 +154,20 @@ export default function Journey() {
                       <span className="text-xs font-bold theme-accent uppercase tracking-wider font-mono">
                         {item.stage}
                       </span>
-                      <h3 className="text-xl sm:text-2xl font-bold font-heading text-[#F1F5F9] leading-snug">
+                      <h3 className="text-xl sm:text-2xl font-bold font-heading text-[var(--text-primary)] leading-snug">
                         {item.school}
                       </h3>
-                      <p className="text-sm text-[#94A3B8] font-sans">
+                      <p className="text-sm text-[var(--text-secondary)] font-sans">
                         {item.degree}
                       </p>
                     </div>
 
                     <div className="flex flex-wrap items-center gap-3 text-xs self-start sm:self-auto shrink-0">
-                      <span className="flex items-center gap-1.5 text-[#94A3B8]">
+                      <span className="flex items-center gap-1.5 text-[var(--text-secondary)]">
                         <FiCalendar className="w-3.5 h-3.5 theme-accent" />
                         <span>{item.year}</span>
                       </span>
-                      <span className="px-3.5 py-1.5 rounded-md bg-white/5 text-[#F1F5F9] font-semibold border border-white/10">
+                      <span className="px-3.5 py-1.5 rounded-md bg-white/5 text-[var(--text-primary)] font-semibold border border-[var(--border-card)]">
                         {item.detail}
                       </span>
                     </div>

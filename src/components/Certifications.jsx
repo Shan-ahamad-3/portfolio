@@ -16,15 +16,15 @@ export default function Certifications() {
             key={idx} 
             className="flex items-start gap-4 p-6 sm:p-8 rounded-2xl glass-card transition-transform hover:-translate-y-0.5 hover:border-[var(--accent)]"
           >
-            <div className="p-3 rounded-xl bg-white/5 theme-accent shrink-0 border border-white/10">
+            <div className="p-3 rounded-xl bg-[var(--bg-card)] theme-accent shrink-0 border border-[var(--border-card)]">
               <FiAward className="w-5 h-5 theme-accent" />
             </div>
 
             <div className="space-y-1">
-              <h3 className="text-base font-bold font-heading text-[#F1F5F9] leading-snug">
+              <h3 className="text-base font-bold font-heading text-[var(--text-primary)] leading-snug">
                 {cert.name}
               </h3>
-              <p className="text-xs font-mono text-[#94A3B8]">
+              <p className="text-xs font-mono text-[var(--text-secondary)]">
                 {cert.issuer}
               </p>
             </div>
