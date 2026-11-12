@@ -12,6 +12,9 @@
     --accent: #BAFF29;
     --accent-muted: rgba(186, 255, 41, 0.12);
     --accent-border: rgba(186, 255, 41, 0.35);
+    --accent-secondary: #8B5CF6;
+    --accent-secondary-muted: rgba(139, 92, 246, 0.15);
+    --accent-secondary-border: rgba(139, 92, 246, 0.35);
     --text-primary: #F8FAFC;
     --text-secondary: #94A3B8;
 
@@ -27,18 +30,21 @@
   /* Light Mode Overrides */
   [data-mode="light"],
   html.light {
-    --bg-canvas: #F8FAFC;
-    --bg-card: rgba(255, 255, 255, 0.90);
-    --border-card: #E2E8F0;
+    --bg-canvas: #F1F5F9;
+    --bg-card: #FFFFFF;
+    --border-card: #CBD5E1;
     --accent: #65A30D;
     --accent-muted: rgba(101, 163, 13, 0.12);
     --accent-border: rgba(101, 163, 13, 0.35);
+    --accent-secondary: #6D28D9;
+    --accent-secondary-muted: rgba(109, 40, 217, 0.12);
+    --accent-secondary-border: rgba(109, 40, 217, 0.35);
     --text-primary: #0F172A;
     --text-secondary: #475569;
 
-    --bg-base: #F8FAFC;
-    --bg-surface: rgba(255, 255, 255, 0.90);
-    --border-subtle: #E2E8F0;
+    --bg-base: #F1F5F9;
+    --bg-surface: #FFFFFF;
+    --border-subtle: #CBD5E1;
     --accent-primary: #65A30D;
     --accent-primary-hover: #4d7c0f;
     color-scheme: light;
@@ -69,6 +75,16 @@
   border: 1px solid var(--border-card) !important;
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
+  transition: all 0.25s ease;
+}
+
+[data-mode="light"] .glass-card,
+html.light .glass-card {
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+}
+
+.glass-card:hover {
+  box-shadow: 0 10px 25px -5px var(--accent-secondary-muted), 0 0 15px -2px var(--accent-secondary-border);
 }
 
 /* Dynamic theme helper classes */
@@ -94,6 +110,14 @@
 
 .theme-accent-border {
   border-color: var(--accent) !important;
+}
+
+.theme-accent-secondary {
+  color: var(--accent-secondary) !important;
+}
+
+.theme-accent-secondary-border {
+  border-color: var(--accent-secondary) !important;
 }
 
 .theme-accent-hover:hover {

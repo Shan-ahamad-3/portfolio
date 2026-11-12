@@ -62,7 +62,7 @@ export default function TechFoundations() {
               {item.skills.map((skill, idx) => (
                 <div
                   key={idx}
-                  className="w-full px-4 py-3 rounded-lg bg-[var(--bg-card)] border border-[var(--border-card)] text-[var(--text-primary)] text-sm md:text-base font-medium tracking-wide hover:border-[var(--accent)] hover:bg-[var(--accent-muted)] transition-colors"
+                  className="w-full px-4 py-3 rounded-lg bg-[var(--bg-card)] border border-[var(--border-card)] hover:border-[var(--accent-secondary)] text-[var(--text-primary)] text-sm md:text-base font-medium tracking-wide hover:shadow-[0_0_12px_var(--accent-secondary-muted)] hover:bg-[var(--accent-muted)] transition-all duration-200 cursor-default"
                 >
                   {skill}
                 </div>

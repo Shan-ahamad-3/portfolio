@@ -96,14 +96,14 @@ export default function Pursuits() {
             <div className="lg:col-span-5 flex flex-col items-center justify-center">
               <div className="relative w-72 h-72 sm:w-88 sm:h-88 md:w-96 md:h-96 flex items-center justify-center font-mono select-none">
                 
-                {/* Hairline Circular Concentric Rings */}
-                <div className="absolute inset-0 rounded-full border border-white/10" />
-                <div className="absolute inset-8 rounded-full border border-dashed border-white/10" />
-                <div className="absolute inset-20 rounded-full border border-white/10" />
+                {/* Hairline Circular Concentric Rings with faint Accent tint */}
+                <div className="absolute inset-0 rounded-full border border-[var(--accent)]/30" />
+                <div className="absolute inset-8 rounded-full border border-dashed border-[var(--accent)]/25" />
+                <div className="absolute inset-20 rounded-full border border-[var(--accent)]/30" />
                 
                 {/* Crosshairs */}
-                <div className="absolute w-full h-[1px] bg-white/10 pointer-events-none" />
-                <div className="absolute h-full w-[1px] bg-white/10 pointer-events-none" />
+                <div className="absolute w-full h-[1px] bg-[var(--accent)]/20 pointer-events-none" />
+                <div className="absolute h-full w-[1px] bg-[var(--accent)]/20 pointer-events-none" />
 
                 {/* Central Rotating Beam / Pointer Arm toward active node */}
                 <div 
