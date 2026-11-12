@@ -3,14 +3,14 @@
 
 @layer base {
   :root {
-    /* 60-30-10 Tech Slate Palette Default */
-    --bg-canvas: #0F1115;                  /* 60% Midnight Slate */
-    --bg-card: rgba(255, 255, 255, 0.03);  /* 30% Silver Glass */
-    --border-card: rgba(255, 255, 255, 0.08);
-    --accent: #38BDF8;                     /* 10% Steel Cobalt */
-    --accent-muted: rgba(56, 189, 248, 0.12);
-    --accent-border: rgba(56, 189, 248, 0.35);
-    --text-primary: #F1F5F9;
+    /* Color Mode & Flagship Default: Dev-Tool Startup */
+    --bg-canvas: #030407;
+    --bg-card: rgba(186, 255, 41, 0.03);
+    --border-card: rgba(186, 255, 41, 0.18);
+    --accent: #BAFF29;
+    --accent-muted: rgba(186, 255, 41, 0.12);
+    --accent-border: rgba(186, 255, 41, 0.35);
+    --text-primary: #F8FAFC;
     --text-secondary: #94A3B8;
 
     /* Legacy compatibility mappings */
@@ -22,58 +22,119 @@
     color-scheme: dark;
   }
 
-  /* Candidate 1: Terminal Monolith (Deep Obsidian + Amber) */
-  [data-theme="terminal-monolith"] {
-    --bg-canvas: #090a0f;
-    --bg-card: rgba(255, 255, 255, 0.03);
-    --border-card: rgba(245, 158, 11, 0.15);
-    --accent: #f59e0b;
-    --accent-muted: rgba(245, 158, 11, 0.12);
-    --accent-border: rgba(245, 158, 11, 0.35);
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
+  /* =========================================================================
+     DARK MODE PALETTES (data-mode="dark" or default dark root)
+     ========================================================================= */
 
-    --bg-base: #090a0f;
-    --bg-surface: #12151e;
-    --border-subtle: #1e2433;
-    --accent-primary: #f59e0b;
-    --accent-primary-hover: #d97706;
+  /* Flagship Option 1: Dev-Tool Startup (Ink Black + Acid Lime) */
+  [data-palette="dev-tool"],
+  :root:not([data-palette]) {
+    --bg-canvas: #030407;
+    --bg-card: rgba(186, 255, 41, 0.03);
+    --border-card: rgba(186, 255, 41, 0.18);
+    --accent: #BAFF29;
+    --accent-muted: rgba(186, 255, 41, 0.12);
+    --accent-border: rgba(186, 255, 41, 0.35);
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
   }
 
-  /* Candidate 2: Editorial Minimalist (Pitch Carbon + Sage/Mint) */
-  [data-theme="editorial-minimalist"] {
-    --bg-canvas: #0b0c0e;
-    --bg-card: rgba(255, 255, 255, 0.03);
-    --border-card: rgba(52, 211, 153, 0.15);
-    --accent: #34d399;
-    --accent-muted: rgba(52, 211, 153, 0.12);
-    --accent-border: rgba(52, 211, 153, 0.35);
-    --text-primary: #f3f4f6;
-    --text-secondary: #9ca3af;
-
-    --bg-base: #0b0c0e;
-    --bg-surface: #14171b;
-    --border-subtle: #22272e;
-    --accent-primary: #34d399;
-    --accent-primary-hover: #10b981;
-  }
-
-  /* Candidate 3: Technical Blueprint / Tech Slate (Midnight Slate + Steel Blue) */
-  [data-theme="technical-blueprint"] {
-    --bg-canvas: #0F1115;
-    --bg-card: rgba(255, 255, 255, 0.03);
-    --border-card: rgba(255, 255, 255, 0.08);
+  /* Option 2: Technical Blueprint (Deep Navy Canvas + Steel Blue) */
+  [data-palette="technical-blueprint"] {
+    --bg-canvas: #060D1A;
+    --bg-card: rgba(56, 189, 248, 0.05);
+    --border-card: rgba(56, 189, 248, 0.22);
     --accent: #38BDF8;
     --accent-muted: rgba(56, 189, 248, 0.12);
     --accent-border: rgba(56, 189, 248, 0.35);
     --text-primary: #F1F5F9;
     --text-secondary: #94A3B8;
+  }
 
-    --bg-base: #0F1115;
-    --bg-surface: rgba(255, 255, 255, 0.03);
-    --border-subtle: rgba(255, 255, 255, 0.08);
-    --accent-primary: #38BDF8;
-    --accent-primary-hover: #0284c7;
+  /* Option 3: Terminal Monolith (Warm Espresso Obsidian + Amber) */
+  [data-palette="terminal-monolith"] {
+    --bg-canvas: #0F0B07;
+    --bg-card: rgba(245, 158, 11, 0.05);
+    --border-card: rgba(245, 158, 11, 0.22);
+    --accent: #F59E0B;
+    --accent-muted: rgba(245, 158, 11, 0.12);
+    --accent-border: rgba(245, 158, 11, 0.35);
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+  }
+
+  /* Option 4: Editorial Minimalist (Deep Forest Carbon + Sage/Mint) */
+  [data-palette="editorial-minimalist"] {
+    --bg-canvas: #06100C;
+    --bg-card: rgba(52, 211, 153, 0.05);
+    --border-card: rgba(52, 211, 153, 0.22);
+    --accent: #34D399;
+    --accent-muted: rgba(52, 211, 153, 0.12);
+    --accent-border: rgba(52, 211, 153, 0.35);
+    --text-primary: #F3F4F6;
+    --text-secondary: #9CA3AF;
+  }
+
+  /* =========================================================================
+     LIGHT MODE OVERRIDES (data-mode="light" or html.light)
+     ========================================================================= */
+
+  [data-mode="light"],
+  html.light {
+    --bg-canvas: #F8FAFC;
+    --bg-card: rgba(255, 255, 255, 0.90);
+    --border-card: #E2E8F0;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    color-scheme: light;
+  }
+
+  [data-mode="light"][data-palette="dev-tool"],
+  html.light[data-palette="dev-tool"] {
+    --bg-canvas: #F7FEE7;
+    --bg-card: rgba(255, 255, 255, 0.92);
+    --border-card: #D9F99D;
+    --accent: #65A30D;
+    --accent-muted: rgba(101, 163, 13, 0.12);
+    --accent-border: rgba(101, 163, 13, 0.35);
+    --text-primary: #14532D;
+    --text-secondary: #4D7C0F;
+  }
+
+  [data-mode="light"][data-palette="technical-blueprint"],
+  html.light[data-palette="technical-blueprint"] {
+    --bg-canvas: #F0F9FF;
+    --bg-card: rgba(255, 255, 255, 0.92);
+    --border-card: #BAE6FD;
+    --accent: #0284C7;
+    --accent-muted: rgba(2, 132, 199, 0.12);
+    --accent-border: rgba(2, 132, 199, 0.35);
+    --text-primary: #0C4A6E;
+    --text-secondary: #0369A1;
+  }
+
+  [data-mode="light"][data-palette="terminal-monolith"],
+  html.light[data-palette="terminal-monolith"] {
+    --bg-canvas: #FFFBEB;
+    --bg-card: rgba(255, 255, 255, 0.92);
+    --border-card: #FDE68A;
+    --accent: #D97706;
+    --accent-muted: rgba(217, 119, 6, 0.12);
+    --accent-border: rgba(217, 119, 6, 0.35);
+    --text-primary: #78350F;
+    --text-secondary: #B45309;
+  }
+
+  [data-mode="light"][data-palette="editorial-minimalist"],
+  html.light[data-palette="editorial-minimalist"] {
+    --bg-canvas: #F0FDF4;
+    --bg-card: rgba(255, 255, 255, 0.92);
+    --border-card: #BBF7D0;
+    --accent: #059669;
+    --accent-muted: rgba(5, 150, 105, 0.12);
+    --accent-border: rgba(5, 150, 105, 0.35);
+    --text-primary: #064E3B;
+    --text-secondary: #047857;
   }
 
   html, body {
