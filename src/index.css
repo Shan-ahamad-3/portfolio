@@ -1,16 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
 @import "tailwindcss";
 
 @layer base {
   :root {
-    /* Default fallback theme: Terminal Monolith */
-    --bg-canvas: #090a0f;
-    --bg-card: #12151e;
-    --border-card: #1e2433;
-    --accent: #f59e0b;
-    --accent-muted: rgba(245, 158, 11, 0.12);
-    --accent-border: rgba(245, 158, 11, 0.35);
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
+    /* 60-30-10 Tech Slate Palette Default */
+    --bg-canvas: #0F1115;                  /* 60% Midnight Slate */
+    --bg-card: rgba(255, 255, 255, 0.03);  /* 30% Silver Glass */
+    --border-card: rgba(255, 255, 255, 0.08);
+    --accent: #38BDF8;                     /* 10% Steel Cobalt */
+    --accent-muted: rgba(56, 189, 248, 0.12);
+    --accent-border: rgba(56, 189, 248, 0.35);
+    --text-primary: #F1F5F9;
+    --text-secondary: #94A3B8;
 
     /* Legacy compatibility mappings */
     --bg-base: var(--bg-canvas);
@@ -24,8 +25,8 @@
   /* Candidate 1: Terminal Monolith (Deep Obsidian + Amber) */
   [data-theme="terminal-monolith"] {
     --bg-canvas: #090a0f;
-    --bg-card: #12151e;
-    --border-card: #1e2433;
+    --bg-card: rgba(255, 255, 255, 0.03);
+    --border-card: rgba(245, 158, 11, 0.15);
     --accent: #f59e0b;
     --accent-muted: rgba(245, 158, 11, 0.12);
     --accent-border: rgba(245, 158, 11, 0.35);
@@ -42,8 +43,8 @@
   /* Candidate 2: Editorial Minimalist (Pitch Carbon + Sage/Mint) */
   [data-theme="editorial-minimalist"] {
     --bg-canvas: #0b0c0e;
-    --bg-card: #14171b;
-    --border-card: #22272e;
+    --bg-card: rgba(255, 255, 255, 0.03);
+    --border-card: rgba(52, 211, 153, 0.15);
     --accent: #34d399;
     --accent-muted: rgba(52, 211, 153, 0.12);
     --accent-border: rgba(52, 211, 153, 0.35);
@@ -57,35 +58,49 @@
     --accent-primary-hover: #10b981;
   }
 
-  /* Candidate 3: Technical Blueprint (Midnight Slate + Steel Blue) */
+  /* Candidate 3: Technical Blueprint / Tech Slate (Midnight Slate + Steel Blue) */
   [data-theme="technical-blueprint"] {
-    --bg-canvas: #0a0e17;
-    --bg-card: #111827;
-    --border-card: #1f293d;
-    --accent: #38bdf8;
+    --bg-canvas: #0F1115;
+    --bg-card: rgba(255, 255, 255, 0.03);
+    --border-card: rgba(255, 255, 255, 0.08);
+    --accent: #38BDF8;
     --accent-muted: rgba(56, 189, 248, 0.12);
     --accent-border: rgba(56, 189, 248, 0.35);
-    --text-primary: #f1f5f9;
-    --text-secondary: #94a3b8;
+    --text-primary: #F1F5F9;
+    --text-secondary: #94A3B8;
 
-    --bg-base: #0a0e17;
-    --bg-surface: #111827;
-    --border-subtle: #1f293d;
-    --accent-primary: #38bdf8;
+    --bg-base: #0F1115;
+    --bg-surface: rgba(255, 255, 255, 0.03);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --accent-primary: #38BDF8;
     --accent-primary-hover: #0284c7;
   }
 
   html, body {
     scroll-behavior: smooth;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: var(--bg-canvas);
     color: var(--text-primary);
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   }
 
+  /* Space Grotesk applied to all headings with tracking-tight */
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.025em;
+  }
+
   code, kbd, samp, pre, .font-mono {
     font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
   }
+}
+
+/* Glassmorphic Silver Glass Utilities */
+.glass-card {
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-card) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
 }
 
 /* Dynamic theme helper classes */

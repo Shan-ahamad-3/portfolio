@@ -52,17 +52,17 @@ export default function TechFoundations() {
         {foundations.map((item) => (
           <Card 
             key={item.category} 
-            className="p-6 space-y-5 bg-white dark:bg-[#14181E] border-slate-200 dark:border-[#2A303A] rounded-2xl shadow-xs"
+            className="p-6 sm:p-8 space-y-6 rounded-2xl glass-card shadow-xs"
           >
-            <h3 className="font-mono text-xs theme-accent font-bold uppercase tracking-wider border-b border-slate-200 dark:border-[#2A303A] pb-3">
+            <h3 className="font-mono text-xs theme-accent font-bold uppercase tracking-wider border-b border-white/10 pb-4">
               {item.category}
             </h3>
 
-            <div className="flex flex-col gap-2.5 w-full">
+            <div className="flex flex-col gap-3 w-full">
               {item.skills.map((skill, idx) => (
                 <div
                   key={idx}
-                  className="w-full px-4 py-3 rounded-lg bg-slate-100/80 dark:bg-zinc-800/50 border border-slate-200/80 dark:border-zinc-700/40 text-slate-800 dark:text-zinc-200 text-sm md:text-base font-medium tracking-wide hover:border-[var(--accent)] hover:bg-slate-200/60 dark:hover:bg-zinc-800 transition-colors"
+                  className="w-full px-4 py-3 rounded-lg bg-white/[0.02] border border-white/10 text-slate-200 text-sm md:text-base font-medium tracking-wide hover:border-[var(--accent)] hover:bg-white/[0.05] transition-colors"
                 >
                   {skill}
                 </div>

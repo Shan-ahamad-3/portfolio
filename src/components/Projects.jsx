@@ -20,41 +20,41 @@ export default function Projects() {
       title="Internships & Projects" 
       subtitle="Practical data analytics workflows, automated data hygiene routines, and responsive web applications."
     >
-      <div className="space-y-12">
+      <div className="space-y-8">
         
         {/* ADHOC NETWORK DATA ANALYTICS INTERNSHIP */}
-        <Card className="p-7 md:p-8 space-y-6 bg-white dark:bg-[#14181E] border-slate-200 dark:border-[#2A303A] rounded-2xl shadow-sm">
+        <Card className="p-6 sm:p-8 space-y-6 rounded-2xl glass-card">
           
           {/* Header */}
-          <div className="border-b border-slate-200 dark:border-[#2A303A] pb-5">
-            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-[#ECEFF4]">
+          <div className="border-b border-white/10 pb-6 space-y-1">
+            <h3 className="text-2xl sm:text-3xl font-bold font-heading text-[#F1F5F9] leading-snug">
               {internship.org}
             </h3>
-            <p className="text-sm font-mono text-slate-600 dark:text-zinc-400 mt-1">
+            <p className="text-sm font-mono text-[#94A3B8]">
               {internship.period} • Python, Pandas, Matplotlib, IQR Quantitative Filtering
             </p>
           </div>
 
           {/* 2-to-3 line concise narrative summary */}
-          <p className="text-base text-slate-700 dark:text-zinc-300 leading-relaxed max-w-4xl">
+          <p className="text-base text-[#94A3B8] leading-relaxed max-w-4xl">
             {internship.summary}
           </p>
 
-          {/* Three Interactive Accordion Panels with Generous Padding */}
+          {/* Three Interactive Accordion Panels with Generous Padding & 4px scale spacing */}
           <div className="space-y-4 pt-2 font-mono text-xs">
             
             {/* 1. Raw Data */}
-            <div className="rounded-xl border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900/60 overflow-hidden transition-colors">
+            <div className="rounded-xl border border-white/10 bg-white/[0.02] overflow-hidden transition-colors">
               <button
                 onClick={() => toggleBlock('rawData')}
                 type="button"
-                className="w-full p-5 flex items-center justify-between text-left hover:text-[var(--accent)] transition-colors cursor-pointer"
+                className="w-full min-h-[48px] p-5 flex items-center justify-between text-left hover:text-[var(--accent)] transition-colors cursor-pointer"
               >
-                <span className="text-sm md:text-base font-semibold text-slate-900 dark:text-[#ECEFF4] flex items-center gap-3">
-                  <FiLayers className="w-5 h-5 theme-accent" />
+                <span className="text-sm md:text-base font-semibold text-[#F1F5F9] flex items-center gap-3">
+                  <FiLayers className="w-5 h-5 theme-accent shrink-0" />
                   <span>1. Raw Data — Tabular Schema & Record Counters</span>
                 </span>
-                <FiChevronDown className={`w-5 h-5 transition-transform ${expandedBlock === 'rawData' ? 'rotate-180 theme-accent' : 'text-slate-400 dark:text-zinc-500'}`} />
+                <FiChevronDown className={`w-5 h-5 transition-transform shrink-0 ${expandedBlock === 'rawData' ? 'rotate-180 theme-accent' : 'text-[#94A3B8]'}`} />
               </button>
 
               <AnimatePresence>
@@ -63,12 +63,12 @@ export default function Projects() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    className="px-5 pb-5 pt-1 border-t border-slate-200 dark:border-zinc-800"
+                    className="px-5 pb-5 pt-1 border-t border-white/10"
                   >
-                    <div className="p-4 rounded-lg bg-white dark:bg-[#14181E] border border-slate-200 dark:border-zinc-800 space-y-4">
-                      <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-slate-200 dark:border-zinc-800 text-xs">
+                    <div className="p-4 rounded-lg bg-black/30 border border-white/10 space-y-4">
+                      <div className="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-white/10 text-xs">
                         <span className="font-bold theme-accent">{internship.blocks.rawData.title}</span>
-                        <span className="px-2.5 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/20">
+                        <span className="px-2.5 py-0.5 rounded-md bg-emerald-500/10 text-emerald-400 font-bold border border-emerald-500/20">
                           {internship.blocks.rawData.records}
                         </span>
                       </div>
@@ -76,18 +76,18 @@ export default function Projects() {
                       <div className="overflow-x-auto">
                         <table className="w-full text-left text-xs">
                           <thead>
-                            <tr className="text-slate-500 dark:text-zinc-400 border-b border-slate-200 dark:border-zinc-800">
+                            <tr className="text-[#94A3B8] border-b border-white/10">
                               <th className="pb-2">Field Name</th>
                               <th className="pb-2">SQL / Pandas Type</th>
                               <th className="pb-2">Hygiene & Validation Note</th>
                             </tr>
                           </thead>
-                          <tbody className="divide-y divide-slate-100 dark:divide-zinc-800/60 font-mono">
+                          <tbody className="divide-y divide-white/5 font-mono">
                             {internship.blocks.rawData.schema.map((row, idx) => (
-                              <tr key={idx} className="hover:bg-slate-50 dark:hover:bg-zinc-800/30">
-                                <td className="py-2.5 font-bold text-slate-800 dark:text-zinc-200">{row.field}</td>
+                              <tr key={idx} className="hover:bg-white/[0.02]">
+                                <td className="py-2.5 font-bold text-slate-200">{row.field}</td>
                                 <td className="py-2.5 theme-accent">{row.type}</td>
-                                <td className="py-2.5 text-slate-600 dark:text-zinc-400">{row.note}</td>
+                                <td className="py-2.5 text-[#94A3B8]">{row.note}</td>
                               </tr>
                             ))}
                           </tbody>
@@ -100,17 +100,17 @@ export default function Projects() {
             </div>
 
             {/* 2. Stack Used */}
-            <div className="rounded-xl border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900/60 overflow-hidden transition-colors">
+            <div className="rounded-xl border border-white/10 bg-white/[0.02] overflow-hidden transition-colors">
               <button
                 onClick={() => toggleBlock('stack')}
                 type="button"
-                className="w-full p-5 flex items-center justify-between text-left hover:text-[var(--accent)] transition-colors cursor-pointer"
+                className="w-full min-h-[48px] p-5 flex items-center justify-between text-left hover:text-[var(--accent)] transition-colors cursor-pointer"
               >
-                <span className="text-sm md:text-base font-semibold text-slate-900 dark:text-[#ECEFF4] flex items-center gap-3">
-                  <FiTerminal className="w-5 h-5 theme-accent" />
+                <span className="text-sm md:text-base font-semibold text-[#F1F5F9] flex items-center gap-3">
+                  <FiTerminal className="w-5 h-5 theme-accent shrink-0" />
                   <span>2. Stack Used — Clean Python/Pandas Vectorized Snippet</span>
                 </span>
-                <FiChevronDown className={`w-5 h-5 transition-transform ${expandedBlock === 'stack' ? 'rotate-180 theme-accent' : 'text-slate-400 dark:text-zinc-500'}`} />
+                <FiChevronDown className={`w-5 h-5 transition-transform shrink-0 ${expandedBlock === 'stack' ? 'rotate-180 theme-accent' : 'text-[#94A3B8]'}`} />
               </button>
 
               <AnimatePresence>
@@ -119,9 +119,9 @@ export default function Projects() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    className="px-5 pb-5 pt-1 border-t border-slate-200 dark:border-zinc-800"
+                    className="px-5 pb-5 pt-1 border-t border-white/10"
                   >
-                    <div className="p-4 rounded-lg bg-[#0B0E11] border border-zinc-800 text-zinc-200 overflow-x-auto text-xs leading-relaxed font-mono">
+                    <div className="p-4 rounded-lg bg-black/40 border border-white/10 text-zinc-200 overflow-x-auto text-xs leading-relaxed font-mono">
                       <pre className="text-emerald-400">{internship.blocks.stack}</pre>
                     </div>
                   </motion.div>
@@ -130,17 +130,17 @@ export default function Projects() {
             </div>
 
             {/* 3. Results */}
-            <div className="rounded-xl border border-slate-200 dark:border-zinc-800 bg-slate-50 dark:bg-zinc-900/60 overflow-hidden transition-colors">
+            <div className="rounded-xl border border-white/10 bg-white/[0.02] overflow-hidden transition-colors">
               <button
                 onClick={() => toggleBlock('results')}
                 type="button"
-                className="w-full p-5 flex items-center justify-between text-left hover:text-[var(--accent)] transition-colors cursor-pointer"
+                className="w-full min-h-[48px] p-5 flex items-center justify-between text-left hover:text-[var(--accent)] transition-colors cursor-pointer"
               >
-                <span className="text-sm md:text-base font-semibold text-slate-900 dark:text-[#ECEFF4] flex items-center gap-3">
-                  <FiTrendingUp className="w-5 h-5 theme-accent" />
+                <span className="text-sm md:text-base font-semibold text-[#F1F5F9] flex items-center gap-3">
+                  <FiTrendingUp className="w-5 h-5 theme-accent shrink-0" />
                   <span>3. Results — Quantitative Outcomes & Attendance Distributions</span>
                 </span>
-                <FiChevronDown className={`w-5 h-5 transition-transform ${expandedBlock === 'results' ? 'rotate-180 theme-accent' : 'text-slate-400 dark:text-zinc-500'}`} />
+                <FiChevronDown className={`w-5 h-5 transition-transform shrink-0 ${expandedBlock === 'results' ? 'rotate-180 theme-accent' : 'text-[#94A3B8]'}`} />
               </button>
 
               <AnimatePresence>
@@ -149,23 +149,23 @@ export default function Projects() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    className="px-5 pb-5 pt-1 border-t border-slate-200 dark:border-zinc-800"
+                    className="px-5 pb-5 pt-1 border-t border-white/10"
                   >
-                    <div className="p-5 rounded-lg bg-white dark:bg-[#14181E] border border-slate-200 dark:border-zinc-800 space-y-4">
+                    <div className="p-5 rounded-lg bg-black/30 border border-white/10 space-y-4">
                       <div className="font-bold theme-accent text-sm">
                         {internship.blocks.results.headline}
                       </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                         {internship.blocks.results.metrics.map((m, idx) => (
-                          <div key={idx} className="p-3 rounded-lg bg-slate-50 dark:bg-zinc-900/80 border border-slate-200 dark:border-zinc-800 space-y-1">
-                            <span className="text-[11px] text-slate-500 dark:text-zinc-400">{m.label}</span>
-                            <div className="text-lg font-bold text-slate-900 dark:text-white">{m.value}</div>
+                          <div key={idx} className="p-3.5 rounded-lg bg-white/[0.02] border border-white/10 space-y-1">
+                            <span className="text-[11px] text-[#94A3B8]">{m.label}</span>
+                            <div className="text-lg font-bold text-[#F1F5F9]">{m.value}</div>
                           </div>
                         ))}
                       </div>
 
-                      <p className="text-xs md:text-sm text-slate-600 dark:text-zinc-300 leading-relaxed font-sans pt-1">
+                      <p className="text-xs md:text-sm text-[#94A3B8] leading-relaxed font-sans pt-1">
                         {internship.blocks.results.takeaway}
                       </p>
                     </div>
@@ -178,17 +178,17 @@ export default function Projects() {
         </Card>
 
         {/* RESTAURANT WEB APP CARD */}
-        <Card className="p-7 md:p-8 space-y-6 bg-white dark:bg-[#14181E] border-slate-200 dark:border-[#2A303A] rounded-2xl shadow-sm">
-          <div className="border-b border-slate-200 dark:border-[#2A303A] pb-5">
-            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-[#ECEFF4]">
+        <Card className="p-6 sm:p-8 space-y-6 rounded-2xl glass-card">
+          <div className="border-b border-white/10 pb-6 space-y-1">
+            <h3 className="text-2xl sm:text-3xl font-bold font-heading text-[#F1F5F9] leading-snug">
               {webProject.title}
             </h3>
-            <p className="text-sm font-mono text-slate-600 dark:text-zinc-400 mt-1">
+            <p className="text-sm font-mono text-[#94A3B8]">
               {webProject.context}
             </p>
           </div>
 
-          <p className="text-base text-slate-700 dark:text-zinc-300 leading-relaxed max-w-4xl">
+          <p className="text-base text-[#94A3B8] leading-relaxed max-w-4xl">
             {webProject.description}
           </p>
 
@@ -199,13 +199,13 @@ export default function Projects() {
             ))}
           </div>
 
-          {/* Functional Action Links */}
-          <div className="pt-4 border-t border-slate-200 dark:border-[#2A303A] flex flex-wrap items-center gap-4 text-xs font-mono">
+          {/* Functional Action Links with 44px minimum touch target */}
+          <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-4 text-xs font-mono">
             <a
               href={webProject.liveUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg theme-accent-bg text-[#090a0f] font-bold transition-all shadow-sm hover:opacity-90"
+              className="inline-flex items-center justify-center gap-2 min-h-[44px] px-5 py-2.5 rounded-xl theme-accent-bg text-[#090a0f] font-bold transition-all shadow-sm hover:opacity-90"
             >
               <FiExternalLink className="w-4 h-4" />
               <span>[ Live Deployment ]</span>
@@ -215,7 +215,7 @@ export default function Projects() {
               href={webProject.repoUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white dark:bg-[#181D24] text-slate-900 dark:text-[#ECEFF4] border border-slate-300 dark:border-[#2A303A] hover:border-[var(--accent)] font-semibold transition-colors shadow-xs"
+              className="inline-flex items-center justify-center gap-2 min-h-[44px] px-5 py-2.5 rounded-xl bg-white/5 text-[#F1F5F9] border border-white/10 hover:border-[var(--accent)] font-semibold transition-colors shadow-xs"
             >
               <FiGithub className="w-4 h-4" />
               <span>[ Source Repository ]</span>

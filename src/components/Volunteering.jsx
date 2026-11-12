@@ -26,34 +26,34 @@ export default function Volunteering() {
           {volunteering.metrics.map((metric, idx) => (
             <div 
               key={idx} 
-              className="bg-white dark:bg-[#14181E] border border-slate-200 dark:border-[#2A303A] rounded-2xl p-6 space-y-2 shadow-xs transition-transform hover:-translate-y-0.5"
+              className="glass-card rounded-2xl p-6 sm:p-8 space-y-2 shadow-xs transition-transform hover:-translate-y-0.5"
             >
               <div className="font-mono text-xs uppercase theme-accent font-bold tracking-wider">
                 {metric.label}
               </div>
-              <div className="text-3xl md:text-4xl font-bold font-mono text-slate-900 dark:text-[#ECEFF4]">
+              <div className="text-3xl md:text-4xl font-bold font-mono text-[#F1F5F9]">
                 {metric.value}
               </div>
             </div>
           ))}
         </div>
 
-        {/* Narrative Card */}
-        <Card className="p-7 md:p-8 space-y-4 bg-white dark:bg-[#14181E] border-slate-200 dark:border-[#2A303A] rounded-2xl shadow-xs overflow-visible">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-200 dark:border-[#2A303A] pb-4 gap-4">
+        {/* Narrative Card: Silver Glass aesthetic, rounded-2xl outer container with p-6 sm:p-8 */}
+        <Card className="p-6 sm:p-8 space-y-6 rounded-2xl overflow-visible">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-6 gap-6">
             
             {/* Left: Organization & Role */}
-            <div>
-              <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-[#ECEFF4]">
+            <div className="space-y-1">
+              <h3 className="text-xl sm:text-2xl font-bold font-heading text-[#F1F5F9] leading-snug">
                 {volunteering.org}
               </h3>
-              <div className="text-sm font-mono theme-accent font-semibold mt-0.5">
+              <div className="text-sm font-mono theme-accent font-semibold">
                 {volunteering.role}
               </div>
             </div>
 
-            {/* Right: Dedicated vertical stack (photos above date, neatly right-aligned) */}
-            <div className="flex flex-col sm:items-end items-start gap-2.5">
+            {/* Right: Dedicated vertical stack (nested rounded-lg items to prevent optical clipping) */}
+            <div className="flex flex-col sm:items-end items-start gap-3">
               
               {/* Overlapping stacked duo with hover fan-out & zoom */}
               <div 
@@ -69,12 +69,12 @@ export default function Volunteering() {
                       key={i}
                       style={{ zIndex: zIndexDefault }}
                       onClick={() => setSelectedImg(photo)}
-                      className={`relative z-30 transition-all duration-300 ease-out ${defaultRotation} group-hover:space-x-3 group-hover:rotate-0 hover:!scale-[2.4] sm:hover:!scale-[2.8] hover:!z-50 hover:shadow-2xl rounded-xl`}
+                      className={`relative z-30 transition-all duration-300 ease-out ${defaultRotation} group-hover:space-x-3 group-hover:rotate-0 hover:!scale-[2.4] sm:hover:!scale-[2.8] hover:!z-50 hover:shadow-2xl rounded-lg`}
                     >
                       <img
                         src={photo.src}
                         alt={photo.alt}
-                        className="w-14 h-10 sm:w-16 sm:h-12 object-cover rounded-lg border-2 border-slate-800 shadow-md transition-all duration-300 hover:border-[var(--accent)]"
+                        className="w-14 h-10 sm:w-16 sm:h-12 object-cover rounded-lg border-2 border-[#0F1115] shadow-md transition-all duration-300 hover:border-[var(--accent)]"
                         onError={(e) => {
                           e.currentTarget.src = '/images/headshot.jpg';
                         }}
@@ -84,8 +84,8 @@ export default function Volunteering() {
                 })}
               </div>
 
-              {/* Text Date Badge placed below the photos, neatly right-aligned */}
-              <div className="text-xs font-mono text-slate-500 dark:text-zinc-400">
+              {/* Text Date Badge: nested rounded-md element */}
+              <div className="text-xs font-mono text-[#94A3B8]">
                 {volunteering.period}
               </div>
 
@@ -93,7 +93,7 @@ export default function Volunteering() {
 
           </div>
 
-          <p className="text-base text-slate-700 dark:text-zinc-300 leading-relaxed pt-1">
+          <p className="text-base text-[#94A3B8] leading-relaxed pt-1">
             {volunteering.description}
           </p>
         </Card>
@@ -115,14 +115,14 @@ export default function Volunteering() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.92, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-3xl w-full bg-[#14181E] border border-zinc-700/60 rounded-2xl overflow-hidden shadow-2xl cursor-default"
+              className="relative max-w-3xl w-full bg-[#14171b] border border-white/10 rounded-2xl overflow-hidden shadow-2xl cursor-default"
             >
-              {/* Close Button */}
+              {/* Close Button with 44px touch target */}
               <button
                 onClick={() => setSelectedImg(null)}
                 type="button"
                 aria-label="Close image preview"
-                className="absolute top-4 right-4 z-10 p-2.5 rounded-full bg-black/60 hover:bg-black/90 text-white transition-colors cursor-pointer"
+                className="absolute top-4 right-4 z-10 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-full bg-black/60 hover:bg-black/90 text-white transition-colors cursor-pointer"
               >
                 <FiX className="w-5 h-5" />
               </button>
@@ -135,7 +135,7 @@ export default function Volunteering() {
                 />
               </div>
 
-              <div className="p-4 bg-zinc-900 border-t border-zinc-800 flex items-center justify-between text-xs font-mono text-zinc-300">
+              <div className="p-4 bg-[#0F1115] border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-300">
                 <span>Vizag Volunteers • Event Operations</span>
                 <span className="theme-accent font-bold">2024 - Present</span>
               </div>

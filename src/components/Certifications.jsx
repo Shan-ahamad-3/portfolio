@@ -14,17 +14,17 @@ export default function Certifications() {
         {certifications.map((cert, idx) => (
           <Card 
             key={idx} 
-            className="flex items-start gap-4 p-6 bg-white dark:bg-[#14181E] border-slate-200 dark:border-[#2A303A] rounded-2xl shadow-xs transition-transform hover:-translate-y-0.5 hover:border-[var(--accent)]"
+            className="flex items-start gap-4 p-6 sm:p-8 rounded-2xl glass-card transition-transform hover:-translate-y-0.5 hover:border-[var(--accent)]"
           >
-            <div className="p-2.5 rounded-xl bg-slate-200/70 dark:bg-[#181D24] theme-accent shrink-0 border border-slate-300 dark:border-[#2A303A]">
+            <div className="p-3 rounded-xl bg-white/5 theme-accent shrink-0 border border-white/10">
               <FiAward className="w-5 h-5 theme-accent" />
             </div>
 
             <div className="space-y-1">
-              <h3 className="text-base font-bold text-slate-900 dark:text-[#ECEFF4] leading-snug">
+              <h3 className="text-base font-bold font-heading text-[#F1F5F9] leading-snug">
                 {cert.name}
               </h3>
-              <p className="text-xs font-mono text-slate-500 dark:text-zinc-400">
+              <p className="text-xs font-mono text-[#94A3B8]">
                 {cert.issuer}
               </p>
             </div>

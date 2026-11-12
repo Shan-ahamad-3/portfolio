@@ -101,7 +101,7 @@ export default function Journey() {
               top: `${trackBounds.top}px`,
               height: `${trackBounds.height}px`
             }}
-            className="absolute left-4 sm:left-7 md:left-8 w-[3px] bg-slate-300 dark:bg-zinc-800 rounded-full pointer-events-none"
+            className="absolute left-4 sm:left-7 md:left-8 w-[3px] bg-white/10 rounded-full pointer-events-none"
           >
             {/* Animated active track fill */}
             {!shouldReduceMotion && (
@@ -122,14 +122,14 @@ export default function Journey() {
             transition={{ type: "spring", stiffness: 120, damping: 20 }}
             className="absolute left-4 sm:left-7 md:left-8 -translate-x-1/2 top-0 z-20 pointer-events-none -mt-4 flex flex-col items-center"
           >
-            <div className="p-1.5 rounded-md bg-white dark:bg-[#0B0E11] border-2 theme-accent-border theme-accent shadow-lg">
+            <div className="p-1.5 rounded-lg bg-[#0F1115] border-2 theme-accent-border theme-accent shadow-lg">
               <TrainLocomotive className="w-5 h-5 theme-accent" />
             </div>
           </motion.div>
         )}
 
         {/* 3 Strict Milestone Cards stretching across wide container */}
-        <div className="space-y-8">
+        <div className="space-y-6">
           {education.map((item, idx) => {
             const isTerminus = item.isTerminus;
             const isHovered = activeStation === idx;
@@ -142,32 +142,32 @@ export default function Journey() {
                 onMouseLeave={() => setActiveStation(null)}
                 className="relative"
               >
-                <Card className={`p-6 sm:p-7 rounded-xl border bg-white dark:bg-zinc-900/60 transition-all duration-300 ease-out cursor-default hover:-translate-y-1.5 hover:shadow-xl hover:border-[var(--accent)] ${
+                <Card className={`p-6 sm:p-8 rounded-2xl glass-card transition-all duration-300 ease-out cursor-default hover:-translate-y-1 hover:shadow-xl hover:border-[var(--accent)] ${
                   isHovered
-                    ? "-translate-y-1.5 shadow-xl border-[var(--accent)]"
+                    ? "-translate-y-1 shadow-xl border-[var(--accent)]"
                     : isTerminus
                       ? "border-[var(--accent-border)] shadow-sm"
-                      : "border-slate-200 dark:border-zinc-800 shadow-xs"
+                      : "border-white/10 shadow-xs"
                 }`}>
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                    <div className="space-y-1">
-                      <span className="text-xs font-bold theme-accent uppercase tracking-wide">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="space-y-2">
+                      <span className="text-xs font-bold theme-accent uppercase tracking-wider font-mono">
                         {item.stage}
                       </span>
-                      <h3 className="text-lg md:text-xl font-bold font-sans text-slate-900 dark:text-[#ECEFF4]">
+                      <h3 className="text-xl sm:text-2xl font-bold font-heading text-[#F1F5F9] leading-snug">
                         {item.school}
                       </h3>
-                      <p className="text-sm text-slate-600 dark:text-zinc-400 font-sans">
+                      <p className="text-sm text-[#94A3B8] font-sans">
                         {item.degree}
                       </p>
                     </div>
 
-                    <div className="flex flex-wrap items-center gap-3 text-xs self-start sm:self-auto">
-                      <span className="flex items-center gap-1.5 text-slate-500 dark:text-zinc-400">
+                    <div className="flex flex-wrap items-center gap-3 text-xs self-start sm:self-auto shrink-0">
+                      <span className="flex items-center gap-1.5 text-[#94A3B8]">
                         <FiCalendar className="w-3.5 h-3.5 theme-accent" />
                         <span>{item.year}</span>
                       </span>
-                      <span className="px-3 py-1 rounded-md bg-[#EFE9DC] dark:bg-[#181D24] text-slate-900 dark:text-[#ECEFF4] font-semibold border border-slate-300 dark:border-zinc-700">
+                      <span className="px-3.5 py-1.5 rounded-md bg-white/5 text-[#F1F5F9] font-semibold border border-white/10">
                         {item.detail}
                       </span>
                     </div>
