@@ -1,137 +1,316 @@
 import { useState } from 'react';
-import Section from './ui/Section';
-import Card from './ui/Card';
-import { pursuits } from '../data/resume';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FiX, FiCheckCircle } from 'react-icons/fi';
+import { FaChessKnight, FaFistRaised } from 'react-icons/fa';
+import { GiShuttlecock, GiOpenBook } from 'react-icons/gi';
+
+const clockNodes = [
+  {
+    id: '12',
+    hour: '12:00',
+    title: 'Chess',
+    name: '12:00 Chess',
+    angle: 0,
+    subtitle: 'Position: 12:00 • Strategy & Calculation',
+    icon: FaChessKnight,
+    image: '/images/pursuits/chess.jpg',
+    lead: 'Strategic thinking under rigid clock constraints, positional pawn structures, and anticipating deep multi-move tactical trees.',
+    bullets: [
+      'Positional calculation and tactical endgame planning',
+      'Rapid decision-making under strict blitz/rapid time controls'
+    ]
+  },
+  {
+    id: '03',
+    hour: '03:00',
+    title: 'Karate',
+    name: '03:00 Karate',
+    angle: 90,
+    subtitle: 'Position: 03:00 • Discipline & Form',
+    icon: FaFistRaised,
+    image: '/images/pursuits/karate.jpg',
+    lead: 'Black Belt Practitioner in Shotokan Karate. Grounded in repetitive execution, physical conditioning, and rigorous martial discipline.',
+    bullets: [
+      'Certified Black Belt Practitioner with competitive sparring experience',
+      'Daily practice emphasizing kata precision, breath cadence, and posture control'
+    ]
+  },
+  {
+    id: '06',
+    hour: '06:00',
+    title: 'Badminton',
+    name: '06:00 Badminton',
+    angle: 180,
+    subtitle: 'Position: 06:00 • Agility & Reflexes',
+    icon: GiShuttlecock,
+    image: '/images/pursuits/badminton.jpg',
+    lead: 'High-cadence cardiovascular endurance, split-step court movement, and precise shot placement along deep tramlines.',
+    bullets: [
+      'Explosive lateral mobility and reaction speed drills',
+      'Singles court coverage and disciplined shot selection'
+    ]
+  },
+  {
+    id: '09',
+    hour: '09:00',
+    title: 'Literature',
+    name: '09:00 Literature',
+    angle: 270,
+    subtitle: 'Position: 09:00 • Introspection & Focus',
+    icon: GiOpenBook,
+    image: '/images/pursuits/literature.jpg',
+    lead: 'Curated reading across operational discipline, biographical retrospectives, and introspective poetry to maintain intellectual equilibrium.',
+    bullets: [
+      'Deep reading habits centered on operational clarity and biographies',
+      'Reflective prose and contemplative poetry exploring composure'
+    ]
+  }
+];
 
 export default function Pursuits() {
-  const [activeDir, setActiveDir] = useState("NW");
-  const selected = pursuits.find((p) => p.shortDir === activeDir) || pursuits[0];
+  const [activeId, setActiveId] = useState('03'); // Karate default
+  const [lightboxImg, setLightboxImg] = useState(null);
+
+  const activeNode = clockNodes.find((n) => n.id === activeId) || clockNodes[1];
+  const IconComp = activeNode.icon;
 
   return (
-    <Section 
-      id="pursuits" 
-      title="Pursuits Beyond Code" 
-      subtitle="Discipline, tactical calculation, and focus mapped across polar coordinates."
-    >
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+    <section id="pursuits" className="py-16 md:py-20 scroll-mt-20">
+      <div className="max-w-6xl px-4 sm:px-6 lg:px-8 mx-auto space-y-8">
         
-        {/* Left / Center (7 cols): Prominent Centralized Radial Compass Dial with Clean Non-Overlapping Controls */}
-        <div className="lg:col-span-7 flex flex-col items-center justify-center">
-          <div className="relative w-80 h-80 sm:w-96 sm:h-96 md:w-[410px] md:h-[410px] flex items-center justify-center font-mono select-none">
-            
-            {/* Outer Compass Rings */}
-            <div className="absolute inset-0 rounded-full border-2 border-white/10" />
-            <div className="absolute inset-8 rounded-full border border-dashed border-white/10" />
-            <div className="absolute inset-20 rounded-full border border-white/10" />
-            
-            {/* Crosshairs */}
-            <div className="absolute w-full h-[1px] bg-white/10 pointer-events-none" />
-            <div className="absolute h-full w-[1px] bg-white/10 pointer-events-none" />
-
-            {/* Core Center Axis */}
-            <div className="relative z-10 w-20 h-20 rounded-2xl bg-[var(--bg-canvas)] border-2 theme-accent-border flex flex-col items-center justify-center shadow-lg">
-              <span className="text-[10px] theme-accent font-bold tracking-widest uppercase">DIAL</span>
-              <span className="text-xs font-bold text-[var(--text-primary)]">{activeDir}</span>
-            </div>
-
-            {/* Northwest: Chess */}
-            <button
-              onClick={() => setActiveDir("NW")}
-              onMouseEnter={() => setActiveDir("NW")}
-              type="button"
-              className={`absolute top-3 left-2 sm:top-5 sm:left-4 min-h-[44px] px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all cursor-pointer z-20 shadow-md ${
-                activeDir === "NW"
-                  ? "theme-accent-bg text-[#090a0f] font-bold scale-105 shadow-lg"
-                  : "bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] hover:border-[var(--accent)]"
-              }`}
-            >
-              Northwest • Chess
-            </button>
-
-            {/* Northeast: Karate */}
-            <button
-              onClick={() => setActiveDir("NE")}
-              onMouseEnter={() => setActiveDir("NE")}
-              type="button"
-              className={`absolute top-3 right-2 sm:top-5 sm:right-4 min-h-[44px] px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all cursor-pointer z-20 shadow-md ${
-                activeDir === "NE"
-                  ? "theme-accent-bg text-[#090a0f] font-bold scale-105 shadow-lg"
-                  : "bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] hover:border-[var(--accent)]"
-              }`}
-            >
-              Northeast • Karate
-            </button>
-
-            {/* Southwest: Badminton (Separated offset to eliminate horizontal overlap) */}
-            <button
-              onClick={() => setActiveDir("SW")}
-              onMouseEnter={() => setActiveDir("SW")}
-              type="button"
-              className={`absolute bottom-3 left-2 sm:bottom-5 sm:left-4 min-h-[44px] px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all cursor-pointer z-20 shadow-md ${
-                activeDir === "SW"
-                  ? "theme-accent-bg text-[#090a0f] font-bold scale-105 shadow-lg"
-                  : "bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] hover:border-[var(--accent)]"
-              }`}
-            >
-              Southwest • Badminton
-            </button>
-
-            {/* Southeast: Literature (Separated offset to eliminate horizontal overlap) */}
-            <button
-              onClick={() => setActiveDir("SE")}
-              onMouseEnter={() => setActiveDir("SE")}
-              type="button"
-              className={`absolute bottom-3 right-2 sm:bottom-5 sm:right-4 min-h-[44px] px-3.5 sm:px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all cursor-pointer z-20 shadow-md ${
-                activeDir === "SE"
-                  ? "theme-accent-bg text-[#090a0f] font-bold scale-105 shadow-lg"
-                  : "bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] hover:border-[var(--accent)]"
-              }`}
-            >
-              Southeast • Literature
-            </button>
-          </div>
+        {/* Section Heading in Space Grotesk */}
+        <div className="text-left space-y-2">
+          <h2 className="text-4xl font-bold tracking-tight text-[var(--text-primary)] font-heading">
+            Pursuits Beyond Code
+          </h2>
+          <p className="text-base text-[var(--text-secondary)] max-w-2xl leading-relaxed">
+            Four disciplined polar coordinates cultivating mental stamina, tactical calculation, physical resilience, and quiet composure.
+          </p>
         </div>
 
-        {/* Right (5 cols): Symmetrically Aligned In-Place Details Panel (Zero Layout Shift) */}
-        <div className="lg:col-span-5">
-          <Card className="p-6 sm:p-8 space-y-6 rounded-2xl glass-card shadow-lg">
+        {/* Unified Silver Glass Container Split into Two Columns */}
+        <div className="glass-card rounded-2xl p-6 sm:p-8 lg:p-10 border border-[var(--border-card)] shadow-lg">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             
-            <div className="flex items-center justify-between border-b border-[var(--border-card)] pb-4">
-              <div>
-                <span className="text-xs font-mono font-bold uppercase theme-accent">
-                  {selected.direction} Coordinate
-                </span>
-                <h3 className="text-2xl font-bold font-heading text-[var(--text-primary)]">
-                  {selected.name}
-                </h3>
-              </div>
-              <span className="text-xs font-mono px-3 py-1 rounded-md bg-white/5 text-[var(--text-secondary)] border border-[var(--border-card)] font-semibold">
-                {selected.shortDir}
-              </span>
-            </div>
+            {/* Left Column (5 cols): Clock Radial Dial */}
+            <div className="lg:col-span-5 flex flex-col items-center justify-center">
+              <div className="relative w-72 h-72 sm:w-88 sm:h-88 md:w-96 md:h-96 flex items-center justify-center font-mono select-none">
+                
+                {/* Hairline Circular Concentric Rings */}
+                <div className="absolute inset-0 rounded-full border border-white/10" />
+                <div className="absolute inset-8 rounded-full border border-dashed border-white/10" />
+                <div className="absolute inset-20 rounded-full border border-white/10" />
+                
+                {/* Crosshairs */}
+                <div className="absolute w-full h-[1px] bg-white/10 pointer-events-none" />
+                <div className="absolute h-full w-[1px] bg-white/10 pointer-events-none" />
 
-            {/* Real Photographic Media with nested rounded-xl */}
-            <div className="w-full h-56 rounded-xl overflow-hidden bg-black/40 border border-[var(--border-card)]">
-              <img
-                src={selected.image}
-                alt={selected.name}
-                className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
-              />
-            </div>
+                {/* Central Rotating Beam / Pointer Arm toward active node */}
+                <div 
+                  className="absolute inset-0 flex items-center justify-center pointer-events-none transition-transform duration-500 ease-out"
+                  style={{ transform: `rotate(${activeNode.angle}deg)` }}
+                >
+                  <div className="w-0.5 h-1/2 bg-gradient-to-t from-transparent via-[#BAFF29]/60 to-[#BAFF29] -translate-y-1/2 rounded-full" />
+                </div>
 
-            <div className="space-y-2">
-              <div className="text-sm font-mono font-bold theme-accent">
-                {selected.tagline}
+                {/* Central Circular Hub (w-20 h-20 rounded-full) */}
+                <div className="relative z-10 w-20 h-20 rounded-full bg-[#030407] border-2 border-[var(--border-card)] flex flex-col items-center justify-center shadow-2xl">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#BAFF29] shadow-[0_0_12px_#BAFF29] animate-pulse mb-1" />
+                  <span className="text-[10px] tracking-widest font-bold text-[#F8FAFC]">DIAL</span>
+                  <span className="text-[10px] text-[#BAFF29] font-mono">{activeNode.hour}</span>
+                </div>
+
+                {/* Cardinal Clock Node 1: Top (12:00 Chess) */}
+                <button
+                  onClick={() => setActiveId('12')}
+                  onMouseEnter={() => setActiveId('12')}
+                  type="button"
+                  className={`absolute top-2 left-1/2 -translate-x-1/2 min-h-[44px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer z-20 shadow-md ${
+                    activeId === '12'
+                      ? 'bg-[#BAFF29] text-[#030407] font-bold scale-105 shadow-[0_0_16px_rgba(186,255,41,0.35)]'
+                      : 'bg-white/[0.04] text-[var(--text-primary)] border border-white/10 hover:border-[#BAFF29]/60'
+                  }`}
+                >
+                  12:00 Chess
+                </button>
+
+                {/* Cardinal Clock Node 2: Right (03:00 Karate) */}
+                <button
+                  onClick={() => setActiveId('03')}
+                  onMouseEnter={() => setActiveId('03')}
+                  type="button"
+                  className={`absolute right-0 top-1/2 -translate-y-1/2 min-h-[44px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer z-20 shadow-md ${
+                    activeId === '03'
+                      ? 'bg-[#BAFF29] text-[#030407] font-bold scale-105 shadow-[0_0_16px_rgba(186,255,41,0.35)]'
+                      : 'bg-white/[0.04] text-[var(--text-primary)] border border-white/10 hover:border-[#BAFF29]/60'
+                  }`}
+                >
+                  03:00 Karate
+                </button>
+
+                {/* Cardinal Clock Node 3: Bottom (06:00 Badminton) */}
+                <button
+                  onClick={() => setActiveId('06')}
+                  onMouseEnter={() => setActiveId('06')}
+                  type="button"
+                  className={`absolute bottom-2 left-1/2 -translate-x-1/2 min-h-[44px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer z-20 shadow-md ${
+                    activeId === '06'
+                      ? 'bg-[#BAFF29] text-[#030407] font-bold scale-105 shadow-[0_0_16px_rgba(186,255,41,0.35)]'
+                      : 'bg-white/[0.04] text-[var(--text-primary)] border border-white/10 hover:border-[#BAFF29]/60'
+                  }`}
+                >
+                  06:00 Badminton
+                </button>
+
+                {/* Cardinal Clock Node 4: Left (09:00 Literature) */}
+                <button
+                  onClick={() => setActiveId('09')}
+                  onMouseEnter={() => setActiveId('09')}
+                  type="button"
+                  className={`absolute left-0 top-1/2 -translate-y-1/2 min-h-[44px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer z-20 shadow-md ${
+                    activeId === '09'
+                      ? 'bg-[#BAFF29] text-[#030407] font-bold scale-105 shadow-[0_0_16px_rgba(186,255,41,0.35)]'
+                      : 'bg-white/[0.04] text-[var(--text-primary)] border border-white/10 hover:border-[#BAFF29]/60'
+                  }`}
+                >
+                  09:00 Literature
+                </button>
               </div>
-              <p className="text-base text-[var(--text-secondary)] leading-relaxed font-sans">
-                {selected.context}
+
+              {/* Centered Monospace Helper Caption */}
+              <p className="mt-4 text-xs font-mono text-[var(--text-secondary)] opacity-80 text-center">
+                • Hover or click dial nodes to rotate showcase
               </p>
             </div>
 
-          </Card>
+            {/* Right Column (7 cols): Active Showcase Card (rounded-xl Inner Card) */}
+            <div className="lg:col-span-7">
+              <div className="rounded-xl bg-white/[0.02] border border-white/10 p-6 sm:p-7 space-y-6 shadow-sm">
+                
+                {/* Top Header Row */}
+                <div className="flex items-center justify-between border-b border-white/10 pb-5 gap-4">
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-11 h-11 rounded-lg bg-[#BAFF29]/10 text-[#BAFF29] border border-[#BAFF29]/30 flex items-center justify-center shrink-0">
+                      <IconComp className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold font-heading text-[var(--text-primary)]">
+                        {activeNode.title}
+                      </h3>
+                      <p className="text-xs font-mono text-[var(--text-secondary)]">
+                        {activeNode.subtitle}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Active Discipline Pill Badge */}
+                  <span className="px-3 py-1.5 rounded-full text-xs font-mono font-semibold bg-[#BAFF29]/10 text-[#BAFF29] border border-[#BAFF29]/30 shrink-0">
+                    Active Discipline
+                  </span>
+                </div>
+
+                {/* Inner Content Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                  
+                  {/* Photo Frame (rounded-lg) with Click to expand overlay */}
+                  <div className="md:col-span-5 relative group overflow-hidden rounded-lg border border-white/10 bg-black/40 shadow-md">
+                    <img
+                      src={activeNode.image}
+                      alt={activeNode.title}
+                      className="w-full h-52 object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    />
+                    
+                    {/* Interactive overlay bar */}
+                    <button
+                      onClick={() => setLightboxImg(activeNode)}
+                      type="button"
+                      className="absolute inset-x-0 bottom-0 py-2 px-3 bg-black/75 hover:bg-black/90 backdrop-blur-xs text-xs font-mono text-[#BAFF29] font-medium flex items-center justify-center gap-1.5 transition-all cursor-pointer opacity-90 group-hover:opacity-100"
+                    >
+                      <span>Click to expand</span>
+                      <span>↗</span>
+                    </button>
+                  </div>
+
+                  {/* Right Side: Lead summary & bullet points */}
+                  <div className="md:col-span-7 space-y-4">
+                    <p className="text-sm sm:text-base text-[var(--text-primary)] leading-relaxed font-sans">
+                      {activeNode.lead}
+                    </p>
+
+                    <ul className="space-y-2.5 text-xs sm:text-sm text-[var(--text-secondary)] font-sans">
+                      {activeNode.bullets.map((bullet, idx) => (
+                        <li key={idx} className="flex items-start gap-2.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#BAFF29] shrink-0 mt-1.5 shadow-[0_0_6px_#BAFF29]" />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                </div>
+
+                {/* Bottom Card Footer with thin border */}
+                <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-[var(--text-secondary)]">
+                  <span className="flex items-center gap-1.5">
+                    <FiCheckCircle className="w-3.5 h-3.5 text-[#BAFF29]" />
+                    <span>Disciplined physical & intellectual composure</span>
+                  </span>
+                  <span className="font-semibold text-[var(--text-primary)]">Human Balance</span>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
         </div>
 
       </div>
-    </Section>
+
+      {/* Lightbox Modal Overlay */}
+      <AnimatePresence>
+        {lightboxImg && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setLightboxImg(null)}
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 cursor-pointer"
+          >
+            <motion.div
+              initial={{ scale: 0.92, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-3xl w-full bg-[#030407] border border-white/15 rounded-2xl overflow-hidden shadow-2xl cursor-default"
+            >
+              <button
+                onClick={() => setLightboxImg(null)}
+                type="button"
+                aria-label="Close image preview"
+                className="absolute top-4 right-4 z-10 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-full bg-black/60 hover:bg-black/90 text-white transition-colors cursor-pointer"
+              >
+                <FiX className="w-5 h-5" />
+              </button>
+
+              <div className="w-full max-h-[75vh] bg-black flex items-center justify-center">
+                <img
+                  src={lightboxImg.image}
+                  alt={lightboxImg.title}
+                  className="w-full h-full max-h-[75vh] object-contain"
+                />
+              </div>
+
+              <div className="p-4 bg-[#030407] border-t border-white/10 flex items-center justify-between text-xs font-mono text-[var(--text-secondary)]">
+                <span className="font-semibold text-[var(--text-primary)]">
+                  {lightboxImg.title} — {lightboxImg.subtitle}
+                </span>
+                <span className="text-[#BAFF29] font-bold">{lightboxImg.hour}</span>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+    </section>
   );
 }

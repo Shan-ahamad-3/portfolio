@@ -12,7 +12,6 @@ import Volunteering from './components/Volunteering';
 import Pursuits from './components/Pursuits';
 import ContactModal from './components/ContactModal';
 import Footer from './components/Footer';
-import ThemeSwitcher from './components/ThemeSwitcher';
 
 const sectionIds = [
   'milestones',
@@ -53,7 +52,7 @@ export default function App() {
   }, [showBootIntro]);
 
   return (
-    <div className={`min-h-screen overflow-x-hidden bg-[var(--bg-canvas)] text-slate-100 font-sans antialiased selection:bg-[var(--accent)] selection:text-[#090a0f] transition-colors duration-300 ${hasCompletedIntro ? 'animate-portfolio-in' : ''}`}>
+    <div className={`min-h-screen overflow-x-hidden bg-[var(--bg-canvas)] text-[var(--text-primary)] font-sans antialiased selection:bg-[var(--accent)] selection:text-[#030407] transition-colors duration-300 ${hasCompletedIntro ? 'animate-portfolio-in' : ''}`}>
       
       {/* 1. Terminal Boot Intro (plays once per session) */}
       {showBootIntro && (
@@ -87,9 +86,6 @@ export default function App() {
 
       {/* 5. Minimal Code-Comment Footer */}
       <Footer />
-
-      {/* 6. Dynamic Live Palette Test Switcher Dock */}
-      <ThemeSwitcher />
 
     </div>
   );
