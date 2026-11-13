@@ -13,111 +13,104 @@ export default function Journey() {
       id="milestones" 
       title="Academic Milestones" 
     >
-      {/* Asymmetric 3-Column Bento Grid Architecture */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono">
+      {/* Balanced 3-Column Bento Row: Compact, uniform height */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch font-mono">
         
-        {/* Flagship Terminus Card: B.Sc. Computer Science (Spans 2 columns on desktop) */}
-        <Card className="md:col-span-2 p-6 sm:p-8 flex flex-col justify-between border-[var(--border-card)] hover:border-[#8B5CF6] transition-all duration-300 shadow-md relative overflow-hidden group">
-          <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
-            <span className="px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[var(--accent-muted)] text-[var(--accent)] border border-[var(--accent-border)]">
-              Degree Terminus
-            </span>
-            <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
-              <FiCalendar className="w-3.5 h-3.5 theme-accent" />
-              <span>{bsc.year}</span>
-            </span>
-          </div>
-
-          <div className="space-y-4 my-2">
-            <div className="space-y-1.5">
+        {/* Card 1: B.Sc. Computer Science (Aditya Degree College) */}
+        <Card className="p-6 flex flex-col justify-between border-[var(--border-card)] hover:border-[#8B5CF6] transition-all duration-300 shadow-sm">
+          <div>
+            <div className="flex items-center justify-between gap-2 mb-3">
               <span className="text-xs font-bold text-[var(--accent)] uppercase tracking-wider">
                 {bsc.stage}
               </span>
-              <h3 className="text-2xl sm:text-3xl font-bold font-heading text-[var(--text-primary)] leading-tight">
+              <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+                <FiCalendar className="w-3.5 h-3.5 theme-accent" />
+                <span className="whitespace-nowrap">{bsc.year}</span>
+              </span>
+            </div>
+
+            <div className="space-y-2 mb-4">
+              <h3 className="text-lg sm:text-xl font-bold font-heading text-[var(--text-primary)] leading-snug">
                 {bsc.school}
               </h3>
+              <p className="text-xs text-[var(--text-secondary)] font-sans leading-relaxed">
+                Specialized in core Computer Science fundamentals, analytical computing, and automated Python data engineering.
+              </p>
             </div>
-            
-            <p className="text-sm sm:text-base text-[var(--text-secondary)] font-sans leading-relaxed">
-              Specialized in core Computer Science fundamentals, analytical computing, automated data hygiene pipelines, and object-oriented software engineering.
-            </p>
           </div>
 
-          {/* Prominent Metric Pills */}
-          <div className="pt-6 border-t border-[var(--border-card)] flex flex-wrap items-center justify-between gap-3">
-            <div className="flex items-center gap-2">
-              <FiAward className="w-4 h-4 text-[#8B5CF6]" />
-              <span className="text-xs font-semibold text-[var(--text-primary)]">{bsc.degree}</span>
-            </div>
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="px-3 py-1 rounded-lg bg-[var(--bg-card)] border border-[#8B5CF6]/40 text-xs font-bold text-[#8B5CF6] shadow-xs">
-                80% Aggregate
-              </span>
-              <span className="px-3 py-1 rounded-lg bg-[var(--accent-muted)] border border-[var(--accent-border)] text-xs font-bold text-[var(--accent)] shadow-xs">
-                9.00 SGPA Final Semester
-              </span>
-            </div>
+          {/* Metric Pills (No duplicate degree label) */}
+          <div className="pt-4 border-t border-[var(--border-card)] flex flex-wrap items-center gap-2">
+            <span className="px-2.5 py-1 rounded-md bg-[var(--bg-canvas)] border border-[#8B5CF6]/40 text-xs font-bold text-[#8B5CF6] whitespace-nowrap shadow-xs">
+              80% Aggregate
+            </span>
+            <span className="px-2.5 py-1 rounded-md bg-[var(--accent-muted)] border border-[var(--accent-border)] text-xs font-bold text-[var(--accent)] whitespace-nowrap shadow-xs">
+              9.00 SGPA Final Semester
+            </span>
           </div>
         </Card>
 
-        {/* Right Column Interlocking Stack for B.V.K. and P.E.N. School */}
-        <div className="col-span-1 flex flex-col gap-6">
-          {/* Intermediate MPC Card */}
-          <Card className="p-6 flex flex-col justify-between border-[var(--border-card)] hover:border-[#8B5CF6]/60 transition-all duration-300">
+        {/* Card 2: Intermediate MPC (B.V.K. Junior College) */}
+        <Card className="p-6 flex flex-col justify-between border-[var(--border-card)] hover:border-[#8B5CF6]/60 transition-all duration-300 shadow-sm">
+          <div>
             <div className="flex items-center justify-between gap-2 mb-3">
               <span className="text-xs font-bold text-[var(--accent)] uppercase tracking-wider">
                 {inter.stage}
               </span>
               <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
                 <FiCalendar className="w-3.5 h-3.5 theme-accent" />
-                <span>{inter.year}</span>
+                <span className="whitespace-nowrap">{inter.year}</span>
               </span>
             </div>
 
-            <div className="space-y-1.5 mb-4">
-              <h3 className="text-lg font-bold font-heading text-[var(--text-primary)]">
+            <div className="space-y-2 mb-4">
+              <h3 className="text-lg sm:text-xl font-bold font-heading text-[var(--text-primary)] leading-snug">
                 {inter.school}
               </h3>
-              <p className="text-xs text-[var(--text-secondary)] font-sans">
-                Mathematics, Physics & Chemistry focus building analytical rigor.
+              <p className="text-xs text-[var(--text-secondary)] font-sans leading-relaxed">
+                Mathematics, Physics & Chemistry focus building strong logical foundation and quantitative reasoning.
               </p>
             </div>
+          </div>
 
-            <div className="pt-3 border-t border-[var(--border-card)] flex items-center justify-between text-xs">
-              <span className="text-[var(--text-secondary)]">{inter.degree}</span>
-              <span className="font-semibold text-[var(--text-primary)]">{inter.detail}</span>
-            </div>
-          </Card>
+          {/* Metric Badge */}
+          <div className="pt-4 border-t border-[var(--border-card)] flex items-center justify-end">
+            <span className="px-3 py-1 rounded-md bg-[var(--bg-canvas)] border border-[var(--border-card)] text-xs font-bold text-[var(--text-primary)] whitespace-nowrap shadow-xs">
+              62% Aggregate
+            </span>
+          </div>
+        </Card>
 
-          {/* Secondary School Certificate (SSC) Card with prominent 99% Aggregate */}
-          <Card className="p-6 flex flex-col justify-between border-[var(--border-card)] hover:border-[#8B5CF6]/60 transition-all duration-300">
+        {/* Card 3: Secondary School Certificate (P.E.N. School) */}
+        <Card className="p-6 flex flex-col justify-between border-[var(--border-card)] hover:border-[#8B5CF6]/60 transition-all duration-300 shadow-sm">
+          <div>
             <div className="flex items-center justify-between gap-2 mb-3">
               <span className="text-xs font-bold text-[var(--accent)] uppercase tracking-wider">
                 {ssc.stage}
               </span>
               <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
                 <FiCalendar className="w-3.5 h-3.5 theme-accent" />
-                <span>{ssc.year}</span>
+                <span className="whitespace-nowrap">{ssc.year}</span>
               </span>
             </div>
 
-            <div className="space-y-1.5 mb-4">
-              <h3 className="text-lg font-bold font-heading text-[var(--text-primary)]">
+            <div className="space-y-2 mb-4">
+              <h3 className="text-lg sm:text-xl font-bold font-heading text-[var(--text-primary)] leading-snug">
                 {ssc.school}
               </h3>
-              <p className="text-xs text-[var(--text-secondary)] font-sans">
-                Secondary school foundational curriculum completed with top distinction.
+              <p className="text-xs text-[var(--text-secondary)] font-sans leading-relaxed">
+                Secondary school foundational curriculum completed with academic distinction and top honors.
               </p>
             </div>
+          </div>
 
-            <div className="pt-3 border-t border-[var(--border-card)] flex items-center justify-between text-xs">
-              <span className="text-[var(--text-secondary)]">{ssc.degree}</span>
-              <span className="font-bold text-[var(--accent)] bg-[var(--accent-muted)] px-3 py-1 rounded-md border border-[var(--accent-border)] shadow-xs">
-                99% Aggregate
-              </span>
-            </div>
-          </Card>
-        </div>
+          {/* Metric Badge */}
+          <div className="pt-4 border-t border-[var(--border-card)] flex items-center justify-end">
+            <span className="px-3 py-1 rounded-md bg-[var(--accent-muted)] border border-[var(--accent-border)] text-xs font-bold text-[var(--accent)] whitespace-nowrap shadow-xs">
+              99% Aggregate
+            </span>
+          </div>
+        </Card>
 
       </div>
     </Section>

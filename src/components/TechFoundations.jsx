@@ -31,10 +31,11 @@ const foundations = [
     icon: FiLayout,
     span: "md:col-span-1 lg:col-span-2",
     skills: [
-      "HTML5 Semantic Architecture",
-      "Tailwind CSS & Utility Styling",
-      "Modern JavaScript (ES6+)",
-      "Responsive Viewport Adaptation"
+      "HTML5",
+      "CSS3",
+      "Tailwind CSS",
+      "JavaScript (ES6+)",
+      "React.js"
     ]
   },
   {
@@ -42,10 +43,10 @@ const foundations = [
     icon: FiCpu,
     span: "md:col-span-2 lg:col-span-2",
     skills: [
-      "Git & GitHub Version Control",
-      "VS Code & Debugging Tooling",
-      "OSI Model & Networking Concepts",
-      "Windows Environment & Diagnostics"
+      "Git & GitHub",
+      "VS Code",
+      "Linux CLI",
+      "Vite"
     ]
   }
 ];
@@ -62,20 +63,20 @@ export default function TechFoundations() {
           return (
             <Card 
               key={item.category} 
-              className={`${item.span} p-6 sm:p-7 space-y-5 rounded-2xl glass-card border-[var(--border-card)] shadow-xs flex flex-col justify-between`}
+              className={`${item.span} p-6 space-y-4 rounded-2xl glass-card border-[var(--border-card)] shadow-xs flex flex-col justify-start`}
             >
-              <div className="flex items-center justify-between border-b border-[var(--border-card)] pb-3.5">
+              <div className="flex items-center justify-between border-b border-[var(--border-card)] pb-3">
                 <h3 className="font-mono text-xs theme-accent font-bold uppercase tracking-wider">
                   {item.category}
                 </h3>
                 <Icon className="w-4 h-4 text-[var(--accent)] shrink-0" />
               </div>
 
-              <div className="flex flex-wrap gap-2.5 w-full">
+              <div className="flex flex-wrap gap-2 w-full pt-1">
                 {item.skills.map((skill, idx) => (
                   <span
                     key={idx}
-                    className="px-3.5 py-2 rounded-lg bg-[var(--bg-canvas)] border border-[var(--border-card)] hover:border-[var(--accent-secondary)] text-[var(--text-primary)] text-xs font-medium tracking-wide hover:shadow-[0_0_12px_var(--accent-secondary-muted)] hover:bg-[var(--accent-muted)] transition-all duration-200 cursor-default"
+                    className="px-3 py-1.5 rounded-lg bg-[var(--bg-canvas)] border border-[var(--border-card)] hover:border-[var(--accent-secondary)] text-[var(--text-primary)] text-xs font-medium tracking-wide hover:shadow-[0_0_12px_var(--accent-secondary-muted)] hover:bg-[var(--accent-muted)] transition-all duration-200 cursor-default"
                   >
                     {skill}
                   </span>

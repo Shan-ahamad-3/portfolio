@@ -1,16 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiX, FiExternalLink } from 'react-icons/fi';
 import Section from './ui/Section';
 
 const certList = [
   {
-    title: "Python Essentials",
+    title: "Python Essentials 2",
     issuer: "Cisco Networking Academy",
     image: "/cert-python.jpg"
   },
   {
-    title: "Cloud Computing Fundamentals",
+    title: "Python for Data Science",
     issuer: "Infosys Springboard",
     image: "/cert-infosys.jpg"
   },
@@ -23,6 +24,18 @@ const certList = [
 
 export default function Certifications() {
   const [lightboxCert, setLightboxCert] = useState(null);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (lightboxCert) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [lightboxCert]);
 
   return (
     <Section 
@@ -66,52 +79,55 @@ export default function Certifications() {
         ))}
       </div>
 
-      {/* Lightbox Modal */}
-      <AnimatePresence>
-        {lightboxCert && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setLightboxCert(null)}
-            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 cursor-pointer"
-          >
+      {/* Centered Portal Lightbox Modal mounted directly to document.body */}
+      {typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
+          {lightboxCert && (
             <motion.div
-              initial={{ scale: 0.92, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.92, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative max-w-4xl w-full bg-[var(--bg-canvas)] border border-[var(--border-card)] rounded-2xl overflow-hidden shadow-2xl cursor-default"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setLightboxCert(null)}
+              className="fixed inset-0 z-[9999] bg-black/80 backdrop-blur-md flex items-center justify-center p-4 cursor-pointer"
             >
-              <button
-                onClick={() => setLightboxCert(null)}
-                type="button"
-                aria-label="Close preview"
-                className="absolute top-4 right-4 z-10 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-full bg-black/60 hover:bg-black/90 text-white transition-colors cursor-pointer"
+              <motion.div
+                initial={{ scale: 0.92, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.92, opacity: 0 }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative max-w-4xl w-full bg-[var(--bg-canvas)] border border-[var(--border-card)] rounded-2xl overflow-hidden shadow-2xl cursor-default"
               >
-                <FiX className="w-5 h-5" />
-              </button>
+                <button
+                  onClick={() => setLightboxCert(null)}
+                  type="button"
+                  aria-label="Close preview"
+                  className="absolute top-4 right-4 z-10 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-full bg-black/60 hover:bg-black/90 text-white transition-colors cursor-pointer"
+                >
+                  <FiX className="w-5 h-5" />
+                </button>
 
-              <div className="w-full max-h-[80vh] bg-black flex items-center justify-center">
-                <img
-                  src={lightboxCert.image}
-                  alt={lightboxCert.title}
-                  className="w-full h-full max-h-[80vh] object-contain"
-                />
-              </div>
+                <div className="w-full max-h-[75vh] bg-black flex items-center justify-center">
+                  <img
+                    src={lightboxCert.image}
+                    alt={lightboxCert.title}
+                    className="w-full h-full max-h-[75vh] object-contain"
+                  />
+                </div>
 
-              <div className="p-4 bg-[var(--bg-card)] border-t border-[var(--border-card)] flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
-                <span className="font-semibold text-[var(--text-primary)] font-heading text-sm">
-                  {lightboxCert.title}
-                </span>
-                <span className="text-[#8B5CF6] font-bold">
-                  {lightboxCert.issuer}
-                </span>
-              </div>
+                <div className="p-4 bg-[var(--bg-card)] border-t border-[var(--border-card)] flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+                  <span className="font-semibold text-[var(--text-primary)] font-heading text-sm">
+                    {lightboxCert.title}
+                  </span>
+                  <span className="text-[#8B5CF6] font-bold">
+                    {lightboxCert.issuer}
+                  </span>
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </Section>
   );
 }

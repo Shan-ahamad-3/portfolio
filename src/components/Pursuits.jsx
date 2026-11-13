@@ -29,7 +29,7 @@ const clockNodes = [
     image: '/images/pursuits/karate.jpg',
     lead: 'Brown Belt Dan 3 Practitioner in Shotokan Karate. Grounded in repetitive execution, physical conditioning, and rigorous martial discipline.',
     bullets: [
-      'Certified Brown Belt Dan 3 Practitioner with competitive sparring experience',
+      'National-level Karate competitor (ages 15–16) with focus on kata precision and kumite sparring.',
       'Daily practice emphasizing kata precision, breath cadence, and posture control'
     ]
   },
@@ -82,12 +82,12 @@ export default function Pursuits() {
         </div>
 
         {/* Unified Silver Glass Container Split into Two Columns */}
-        <div className="glass-card rounded-2xl p-6 sm:p-8 lg:p-10 border border-[var(--border-card)] shadow-lg">
+        <div className="glass-card rounded-2xl p-6 sm:p-8 lg:p-10 border border-[var(--border-card)] shadow-lg overflow-visible">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             
-            {/* Left Column (5 cols): Clock Radial Dial */}
-            <div className="lg:col-span-5 flex flex-col items-center justify-center">
-              <div className="relative w-72 h-72 sm:w-88 sm:h-88 md:w-96 md:h-96 flex items-center justify-center font-mono select-none">
+            {/* Left Column (5 cols): Clock Radial Dial with safe clearance */}
+            <div className="lg:col-span-5 flex flex-col items-center justify-center py-8 overflow-visible">
+              <div className="relative w-60 h-60 sm:w-64 sm:h-64 md:w-72 md:h-72 flex items-center justify-center font-mono select-none overflow-visible">
                 
                 {/* Hairline Circular Concentric Rings with faint Accent tint */}
                 <div className="absolute inset-0 rounded-full border border-[var(--accent)]/30" />
@@ -116,9 +116,8 @@ export default function Pursuits() {
                 {/* Cardinal Dial Node 1: Top (Chess) */}
                 <button
                   onClick={() => setActiveId('12')}
-                  onMouseEnter={() => setActiveId('12')}
                   type="button"
-                  className={`absolute top-2 left-1/2 -translate-x-1/2 min-h-[44px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer z-20 shadow-md ${
+                  className={`absolute -top-3 left-1/2 -translate-x-1/2 min-h-[44px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer z-20 shadow-md ${
                     activeId === '12'
                       ? 'bg-[var(--accent)] text-[#030407] font-bold scale-105 shadow-[0_0_16px_var(--accent-muted)]'
                       : 'bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] hover:border-[var(--accent)]/60'
@@ -130,9 +129,8 @@ export default function Pursuits() {
                 {/* Cardinal Dial Node 2: Right (Karate) */}
                 <button
                   onClick={() => setActiveId('03')}
-                  onMouseEnter={() => setActiveId('03')}
                   type="button"
-                  className={`absolute right-0 top-1/2 -translate-y-1/2 min-h-[44px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer z-20 shadow-md ${
+                  className={`absolute -right-4 top-1/2 -translate-y-1/2 min-h-[44px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer z-20 shadow-md ${
                     activeId === '03'
                       ? 'bg-[var(--accent)] text-[#030407] font-bold scale-105 shadow-[0_0_16px_var(--accent-muted)]'
                       : 'bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] hover:border-[var(--accent)]/60'
@@ -144,9 +142,8 @@ export default function Pursuits() {
                 {/* Cardinal Dial Node 3: Bottom (Badminton) */}
                 <button
                   onClick={() => setActiveId('06')}
-                  onMouseEnter={() => setActiveId('06')}
                   type="button"
-                  className={`absolute bottom-2 left-1/2 -translate-x-1/2 min-h-[44px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer z-20 shadow-md ${
+                  className={`absolute -bottom-3 left-1/2 -translate-x-1/2 min-h-[44px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer z-20 shadow-md ${
                     activeId === '06'
                       ? 'bg-[var(--accent)] text-[#030407] font-bold scale-105 shadow-[0_0_16px_var(--accent-muted)]'
                       : 'bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] hover:border-[var(--accent)]/60'
@@ -158,9 +155,8 @@ export default function Pursuits() {
                 {/* Cardinal Dial Node 4: Left (Literature) */}
                 <button
                   onClick={() => setActiveId('09')}
-                  onMouseEnter={() => setActiveId('09')}
                   type="button"
-                  className={`absolute left-0 top-1/2 -translate-y-1/2 min-h-[44px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer z-20 shadow-md ${
+                  className={`absolute -left-4 top-1/2 -translate-y-1/2 min-h-[44px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer z-20 shadow-md ${
                     activeId === '09'
                       ? 'bg-[var(--accent)] text-[#030407] font-bold scale-105 shadow-[0_0_16px_var(--accent-muted)]'
                       : 'bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] hover:border-[var(--accent)]/60'
@@ -175,7 +171,7 @@ export default function Pursuits() {
             <div className="lg:col-span-7">
               <div className="rounded-xl bg-[var(--bg-card)] border border-[var(--border-card)] p-6 sm:p-7 space-y-6 shadow-sm">
                 
-                {/* Top Header Row */}
+                {/* Top Header Row (No Active Discipline Badge) */}
                 <div className="flex items-center justify-between border-b border-[var(--border-card)] pb-5 gap-4">
                   <div className="flex items-center gap-3.5">
                     <div className="w-11 h-11 rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/30 flex items-center justify-center shrink-0">
@@ -190,11 +186,6 @@ export default function Pursuits() {
                       </p>
                     </div>
                   </div>
-
-                  {/* Active Discipline Pill Badge */}
-                  <span className="px-3 py-1.5 rounded-full text-xs font-mono font-semibold bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/30 shrink-0">
-                    Active Discipline
-                  </span>
                 </div>
 
                 {/* Inner Content Grid */}

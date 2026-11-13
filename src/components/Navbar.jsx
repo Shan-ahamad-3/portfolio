@@ -28,12 +28,12 @@ export default function Navbar({ activeSection, theme, toggleTheme, onOpenContac
     <header className="sticky top-0 z-40 bg-[var(--bg-canvas)]/90 backdrop-blur-md border-b border-[var(--border-card)] transition-colors">
       <div className="w-full px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         
-        {/* Full Legal Name anchored neatly to the far left edge */}
+        {/* Brand Text anchored neatly to the far left edge */}
         <a 
           href="#" 
-          className="font-bold text-base sm:text-lg text-[var(--text-primary)] tracking-tight hover:text-[var(--accent)] transition-colors whitespace-nowrap"
+          className="font-bold text-lg sm:text-xl font-heading text-[var(--text-primary)] tracking-tight hover:opacity-90 transition-opacity whitespace-nowrap"
         >
-          {profile.name}
+          ZEESHAN<span className="text-[var(--accent)] font-extrabold">.</span>
         </a>
 
         {/* Desktop Navigation */}

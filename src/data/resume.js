@@ -29,7 +29,7 @@ export const education = [
     stage: "Intermediate", 
     school: "B.V.K. Junior College, Visakhapatnam", 
     degree: "Intermediate MPC", 
-    detail: "62%-63% Aggregate", 
+    detail: "62% Aggregate", 
     year: "2021–2023" 
   },
   { 

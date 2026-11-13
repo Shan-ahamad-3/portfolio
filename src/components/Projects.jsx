@@ -14,11 +14,11 @@ export default function Projects() {
       id="projects" 
       title="Internships & Projects" 
     >
-      {/* Bento Grid Architecture: 4-column dynamic mosaic */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 font-mono">
+      {/* 12-Column Asymmetrical Bento Grid: 7 cols left, 5 cols right */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start font-mono">
         
-        {/* Bento Tile 1: Flagship Internship Overview & Pipeline (md:col-span-2 lg:col-span-3) */}
-        <Card className="md:col-span-2 lg:col-span-3 p-6 sm:p-8 space-y-6 flex flex-col justify-between border-[var(--border-card)]">
+        {/* Left Column (lg:col-span-7): Flagship Internship & Schema/Code Inspection Deck */}
+        <Card className="lg:col-span-7 p-6 sm:p-8 space-y-6 flex flex-col justify-between border-[var(--border-card)]">
           <div className="space-y-3">
             <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border-card)] pb-4">
               <div>
@@ -29,7 +29,7 @@ export default function Projects() {
                   {internship.org}
                 </h3>
               </div>
-              <span className="px-3 py-1 rounded-md bg-[var(--bg-card)] border border-[var(--border-card)] text-xs text-[var(--text-secondary)]">
+              <span className="px-3 py-1 rounded-md bg-[var(--bg-canvas)] border border-[var(--border-card)] text-xs text-[var(--text-secondary)]">
                 {internship.period}
               </span>
             </div>
@@ -39,7 +39,7 @@ export default function Projects() {
             </p>
           </div>
 
-          {/* Interactive Inspection Deck within the tile */}
+          {/* Interactive Inspection Deck */}
           <div className="space-y-4 pt-2">
             <div className="flex items-center gap-2 border-b border-[var(--border-card)] pb-2 text-xs">
               <button
@@ -76,7 +76,7 @@ export default function Projects() {
                     {internship.blocks.rawData.records}
                   </span>
                 </div>
-                <table className="w-full text-left text-xs min-w-[500px]">
+                <table className="w-full text-left text-xs min-w-[460px]">
                   <thead>
                     <tr className="text-[var(--text-secondary)] border-b border-[var(--border-card)]">
                       <th className="pb-2">Field</th>
@@ -105,81 +105,85 @@ export default function Projects() {
           </div>
         </Card>
 
-        {/* Bento Tile 2: Quantitative Metrics Counter (col-span-1) */}
-        <Card className="col-span-1 p-6 sm:p-7 flex flex-col justify-between border-[var(--border-card)] space-y-4">
-          <div>
-            <div className="flex items-center gap-2 text-xs font-bold text-[var(--accent)] uppercase tracking-wider mb-2">
-              <FiTrendingUp className="w-4 h-4" />
-              <span>Outcomes</span>
+        {/* Right Column (lg:col-span-5): Stack Outcomes + Restaurant Website tightly */}
+        <div className="lg:col-span-5 flex flex-col gap-6">
+          
+          {/* Card 1: Outcomes */}
+          <Card className="p-6 space-y-4 border-[var(--border-card)]">
+            <div className="flex items-center justify-between border-b border-[var(--border-card)] pb-3">
+              <div className="flex items-center gap-2 text-xs font-bold text-[var(--accent)] uppercase tracking-wider">
+                <FiTrendingUp className="w-4 h-4" />
+                <span>Outcomes</span>
+              </div>
+              <span className="text-[10px] text-[var(--text-secondary)] uppercase">Quantitative Impact</span>
             </div>
-            <h4 className="text-lg font-bold font-heading text-[var(--text-primary)]">
+
+            <h4 className="text-base font-bold font-heading text-[var(--text-primary)]">
               {internship.blocks.results.headline}
             </h4>
-          </div>
 
-          <div className="space-y-3">
-            {internship.blocks.results.metrics.map((m, idx) => (
-              <div key={idx} className="p-3 rounded-lg bg-[var(--bg-canvas)] border border-[var(--border-card)]">
-                <div className="text-[10px] text-[var(--text-secondary)] uppercase">{m.label}</div>
-                <div className="text-lg font-bold text-[var(--text-primary)] mt-0.5">{m.value}</div>
-              </div>
-            ))}
-          </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+              {internship.blocks.results.metrics.map((m, idx) => (
+                <div key={idx} className="p-3 rounded-lg bg-[var(--bg-canvas)] border border-[var(--border-card)]">
+                  <div className="text-[10px] text-[var(--text-secondary)] uppercase">{m.label}</div>
+                  <div className="text-base font-bold text-[var(--text-primary)] mt-0.5">{m.value}</div>
+                </div>
+              ))}
+            </div>
 
-          <p className="text-xs text-[var(--text-secondary)] font-sans leading-relaxed pt-2 border-t border-[var(--border-card)]">
-            {internship.blocks.results.takeaway}
-          </p>
-        </Card>
+            <p className="text-xs text-[var(--text-secondary)] font-sans leading-relaxed pt-1">
+              {internship.blocks.results.takeaway}
+            </p>
+          </Card>
 
-        {/* Bento Tile 3: Hackathon Restaurant Web App (md:col-span-2 lg:col-span-4) */}
-        <Card className="md:col-span-2 lg:col-span-4 p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border-[var(--border-card)] hover:border-[var(--accent)]/60">
-          <div className="space-y-3 max-w-2xl">
-            <div className="flex flex-wrap items-center gap-2">
+          {/* Card 2: Restaurant Website */}
+          <Card className="p-6 space-y-4 border-[var(--border-card)] hover:border-[var(--accent)]/60 transition-colors">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border-card)] pb-3">
               <span className="text-xs font-bold text-[var(--accent)] uppercase tracking-wider">
                 Hackathon Sprint
               </span>
-              <span className="text-xs text-[var(--text-secondary)]">•</span>
               <span className="text-xs text-[var(--text-secondary)]">{webProject.context}</span>
             </div>
 
-            <h3 className="text-2xl font-bold font-heading text-[var(--text-primary)]">
-              {webProject.title}
-            </h3>
-
-            <p className="text-sm text-[var(--text-secondary)] font-sans leading-relaxed">
-              {webProject.description}
-            </p>
+            <div className="space-y-1.5">
+              <h3 className="text-xl font-bold font-heading text-[var(--text-primary)]">
+                {webProject.title}
+              </h3>
+              <p className="text-xs text-[var(--text-secondary)] font-sans leading-relaxed">
+                {webProject.description}
+              </p>
+            </div>
 
             <div className="flex flex-wrap gap-2 pt-1">
               {webProject.tech.map((t) => (
                 <Chip key={t} label={t} variant="default" />
               ))}
             </div>
-          </div>
 
-          {/* Action Links */}
-          <div className="flex flex-wrap items-center gap-3 shrink-0 self-start md:self-center">
-            <a
-              href={webProject.liveUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 min-h-[44px] px-5 py-2.5 rounded-xl theme-accent-bg text-[#090a0f] font-bold text-xs transition-all shadow-sm hover:opacity-90"
-            >
-              <FiExternalLink className="w-4 h-4" />
-              <span>Live Deployment</span>
-            </a>
+            <div className="flex flex-wrap items-center gap-3 pt-3 border-t border-[var(--border-card)]">
+              <a
+                href={webProject.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 min-h-[40px] px-4 py-2 rounded-xl theme-accent-bg text-[#090a0f] font-bold text-xs transition-all shadow-sm hover:opacity-90"
+              >
+                <FiExternalLink className="w-3.5 h-3.5" />
+                <span>Live Demo</span>
+              </a>
 
-            <a
-              href={webProject.repoUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 min-h-[44px] px-5 py-2.5 rounded-xl bg-[var(--bg-canvas)] text-[var(--text-primary)] border border-[var(--border-card)] hover:border-[var(--accent)] font-semibold text-xs transition-colors shadow-xs"
-            >
-              <FiGithub className="w-4 h-4" />
-              <span>Repository</span>
-            </a>
-          </div>
-        </Card>
+              <a
+                href={webProject.repoUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 min-h-[40px] px-4 py-2 rounded-xl bg-[var(--bg-canvas)] text-[var(--text-primary)] border border-[var(--border-card)] hover:border-[var(--accent)] font-semibold text-xs transition-colors shadow-xs"
+              >
+                <FiGithub className="w-3.5 h-3.5" />
+                <span>Repository</span>
+              </a>
+            </div>
+          </Card>
+
+        </div>
 
       </div>
     </Section>

@@ -18,8 +18,8 @@ export default function Hero() {
 
             {/* Strict Left-Aligned Identity Header & 1.25 Typography Scale */}
             <div className="space-y-3">
-              <h1 className="text-4xl sm:text-5xl lg:text-5xl font-bold tracking-tight text-[var(--text-primary)] leading-tight font-heading">
-                {profile.name}
+              <h1 className="text-4xl sm:text-5xl lg:text-5xl font-bold tracking-tight text-[var(--text-primary)] leading-tight font-heading uppercase">
+                MOHAMMAD ZEESHAN AHAMAD
               </h1>
               <p className="text-lg sm:text-xl font-medium theme-accent font-mono leading-snug">
                 {profile.title}
