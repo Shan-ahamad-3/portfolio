@@ -7,10 +7,10 @@ export default function Hero() {
       <div className="max-w-6xl px-4 sm:px-6 lg:px-8 mx-auto">
         {/* Rule of Thirds Layout: 2/3 text & identity, 1/3 portrait on desktop */}
         <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-10 lg:gap-12">
-          
+
           {/* Left Column (lg:w-2/3): Identity strictly aligned to the left axis */}
           <div className="w-full lg:w-2/3 space-y-6 text-left">
-            
+
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-mono bg-white/5 border border-[var(--border-card)] text-[var(--text-secondary)]">
               <span className="w-2 h-2 rounded-full theme-accent-bg" />
               <span>{profile.location} • Available for Data & Software Roles</span>
@@ -67,7 +67,7 @@ export default function Hero() {
           {/* Right Column (lg:w-1/3): Portrait aligned in 1/3 column */}
           <div className="w-full lg:w-1/3 flex justify-center lg:justify-end">
             <div className="relative group">
-              <div 
+              <div
                 className="absolute -inset-1.5 rounded-3xl opacity-20 blur-xl group-hover:opacity-35 transition-all duration-300"
                 style={{ backgroundColor: 'var(--accent)' }}
               />

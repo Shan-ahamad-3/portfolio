@@ -7,11 +7,10 @@ import { GiShuttlecock, GiOpenBook } from 'react-icons/gi';
 const clockNodes = [
   {
     id: '12',
-    hour: '12:00',
     title: 'Chess',
-    name: '12:00 Chess',
+    name: 'Chess',
     angle: 0,
-    subtitle: 'Position: 12:00 • Strategy & Calculation',
+    subtitle: 'Strategy & Calculation',
     icon: FaChessKnight,
     image: '/images/pursuits/chess.jpg',
     lead: 'Strategic thinking under rigid clock constraints, positional pawn structures, and anticipating deep multi-move tactical trees.',
@@ -22,11 +21,10 @@ const clockNodes = [
   },
   {
     id: '03',
-    hour: '03:00',
     title: 'Karate',
-    name: '03:00 Karate',
+    name: 'Karate',
     angle: 90,
-    subtitle: 'Position: 03:00 • Discipline & Form',
+    subtitle: 'Discipline & Form',
     icon: FaFistRaised,
     image: '/images/pursuits/karate.jpg',
     lead: 'Brown Belt Dan 3 Practitioner in Shotokan Karate. Grounded in repetitive execution, physical conditioning, and rigorous martial discipline.',
@@ -37,11 +35,10 @@ const clockNodes = [
   },
   {
     id: '06',
-    hour: '06:00',
     title: 'Badminton',
-    name: '06:00 Badminton',
+    name: 'Badminton',
     angle: 180,
-    subtitle: 'Position: 06:00 • Agility & Reflexes',
+    subtitle: 'Agility & Reflexes',
     icon: GiShuttlecock,
     image: '/images/pursuits/badminton.jpg',
     lead: 'High-cadence cardiovascular endurance, split-step court movement, and precise shot placement along deep tramlines.',
@@ -52,11 +49,10 @@ const clockNodes = [
   },
   {
     id: '09',
-    hour: '09:00',
     title: 'Literature',
-    name: '09:00 Literature',
+    name: 'Literature',
     angle: 270,
-    subtitle: 'Position: 09:00 • Introspection & Focus',
+    subtitle: 'Introspection & Focus',
     icon: GiOpenBook,
     image: '/images/pursuits/literature.jpg',
     lead: 'Curated reading across operational discipline, biographical retrospectives, and introspective poetry to maintain intellectual equilibrium.',
@@ -113,11 +109,11 @@ export default function Pursuits() {
                 {/* Central Circular Hub (w-20 h-20 rounded-full) */}
                 <div className="relative z-10 w-20 h-20 rounded-full bg-[var(--bg-card)] border-2 border-[var(--border-card)] flex flex-col items-center justify-center shadow-2xl">
                   <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent)] shadow-[0_0_12px_var(--accent)] animate-pulse mb-1" />
-                  <span className="text-[10px] tracking-widest font-bold text-[var(--text-primary)]">DIAL</span>
-                  <span className="text-[10px] text-[var(--accent)] font-mono">{activeNode.hour}</span>
+                  <span className="text-[10px] tracking-widest font-bold text-[var(--text-primary)]">FOCUS</span>
+                  <span className="text-[10px] text-[var(--accent)] font-mono">{activeNode.title}</span>
                 </div>
 
-                {/* Cardinal Clock Node 1: Top (12:00 Chess) */}
+                {/* Cardinal Dial Node 1: Top (Chess) */}
                 <button
                   onClick={() => setActiveId('12')}
                   onMouseEnter={() => setActiveId('12')}
@@ -128,10 +124,10 @@ export default function Pursuits() {
                       : 'bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] hover:border-[var(--accent)]/60'
                   }`}
                 >
-                  12:00 Chess
+                  Chess
                 </button>
 
-                {/* Cardinal Clock Node 2: Right (03:00 Karate) */}
+                {/* Cardinal Dial Node 2: Right (Karate) */}
                 <button
                   onClick={() => setActiveId('03')}
                   onMouseEnter={() => setActiveId('03')}
@@ -142,10 +138,10 @@ export default function Pursuits() {
                       : 'bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] hover:border-[var(--accent)]/60'
                   }`}
                 >
-                  03:00 Karate
+                  Karate
                 </button>
 
-                {/* Cardinal Clock Node 3: Bottom (06:00 Badminton) */}
+                {/* Cardinal Dial Node 3: Bottom (Badminton) */}
                 <button
                   onClick={() => setActiveId('06')}
                   onMouseEnter={() => setActiveId('06')}
@@ -156,10 +152,10 @@ export default function Pursuits() {
                       : 'bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] hover:border-[var(--accent)]/60'
                   }`}
                 >
-                  06:00 Badminton
+                  Badminton
                 </button>
 
-                {/* Cardinal Clock Node 4: Left (09:00 Literature) */}
+                {/* Cardinal Dial Node 4: Left (Literature) */}
                 <button
                   onClick={() => setActiveId('09')}
                   onMouseEnter={() => setActiveId('09')}
@@ -170,7 +166,7 @@ export default function Pursuits() {
                       : 'bg-[var(--bg-card)] text-[var(--text-primary)] border border-[var(--border-card)] hover:border-[var(--accent)]/60'
                   }`}
                 >
-                  09:00 Literature
+                  Literature
                 </button>
               </div>
             </div>
@@ -280,7 +276,7 @@ export default function Pursuits() {
                 <span className="font-semibold text-[var(--text-primary)]">
                   {lightboxImg.title} — {lightboxImg.subtitle}
                 </span>
-                <span className="text-[var(--accent)] font-bold">{lightboxImg.hour}</span>
+                <span className="text-[var(--accent)] font-bold">{lightboxImg.title}</span>
               </div>
             </motion.div>
           </motion.div>
