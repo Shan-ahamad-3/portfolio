@@ -65,10 +65,26 @@ const clockNodes = [
 
 export default function Pursuits() {
   const [activeId, setActiveId] = useState('03'); // Karate default
+  const [rotationAngle, setRotationAngle] = useState(90); // 90deg for Karate default
   const [lightboxImg, setLightboxImg] = useState(null);
 
   const activeNode = clockNodes.find((n) => n.id === activeId) || clockNodes[1];
   const IconComp = activeNode.icon;
+
+  const handleSelectNode = (nodeId) => {
+    const targetNode = clockNodes.find((n) => n.id === nodeId);
+    if (!targetNode) return;
+
+    setActiveId(nodeId);
+
+    // Compute shortest angular delta to prevent 270-degree spin-backs
+    const targetAngle = targetNode.angle;
+    const currentNorm = ((rotationAngle % 360) + 360) % 360;
+    let delta = targetAngle - currentNorm;
+    if (delta > 180) delta -= 360;
+    if (delta <= -180) delta += 360;
+    setRotationAngle((prev) => prev + delta);
+  };
 
   return (
     <section id="pursuits" className="py-16 md:py-20 scroll-mt-20">
@@ -98,12 +114,12 @@ export default function Pursuits() {
                 <div className="absolute w-full h-[1px] bg-[var(--accent)]/20 pointer-events-none" />
                 <div className="absolute h-full w-[1px] bg-[var(--accent)]/20 pointer-events-none" />
 
-                {/* Central Rotating Beam / Pointer Arm toward active node */}
+                {/* Central Rotating Beam / Pointer Arm toward active node (pointing UP toward Chess at 0deg) */}
                 <div 
                   className="absolute inset-0 flex items-center justify-center pointer-events-none transition-transform duration-500 ease-out"
-                  style={{ transform: `rotate(${activeNode.angle}deg)` }}
+                  style={{ transform: `rotate(${rotationAngle}deg)` }}
                 >
-                  <div className="w-0.5 h-1/2 bg-gradient-to-t from-transparent via-[var(--accent)]/60 to-[var(--accent)] -translate-y-1/2 rounded-full" />
+                  <div className="w-[2px] h-1/2 bg-gradient-to-t from-[#BAFF29]/20 to-[#BAFF29] origin-bottom -translate-y-1/2 rounded-full shadow-[0_0_8px_#BAFF29]" />
                 </div>
 
                 {/* Central Circular Hub (w-20 h-20 rounded-full) */}
@@ -115,7 +131,7 @@ export default function Pursuits() {
 
                 {/* Cardinal Dial Node 1: Top (Chess) */}
                 <button
-                  onClick={() => setActiveId('12')}
+                  onClick={() => handleSelectNode('12')}
                   type="button"
                   className={`absolute -top-3 left-1/2 -translate-x-1/2 min-h-[44px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer z-20 shadow-md ${
                     activeId === '12'
@@ -128,7 +144,7 @@ export default function Pursuits() {
 
                 {/* Cardinal Dial Node 2: Right (Karate) */}
                 <button
-                  onClick={() => setActiveId('03')}
+                  onClick={() => handleSelectNode('03')}
                   type="button"
                   className={`absolute -right-4 top-1/2 -translate-y-1/2 min-h-[44px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer z-20 shadow-md ${
                     activeId === '03'
@@ -141,7 +157,7 @@ export default function Pursuits() {
 
                 {/* Cardinal Dial Node 3: Bottom (Badminton) */}
                 <button
-                  onClick={() => setActiveId('06')}
+                  onClick={() => handleSelectNode('06')}
                   type="button"
                   className={`absolute -bottom-3 left-1/2 -translate-x-1/2 min-h-[44px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer z-20 shadow-md ${
                     activeId === '06'
@@ -154,7 +170,7 @@ export default function Pursuits() {
 
                 {/* Cardinal Dial Node 4: Left (Literature) */}
                 <button
-                  onClick={() => setActiveId('09')}
+                  onClick={() => handleSelectNode('09')}
                   type="button"
                   className={`absolute -left-4 top-1/2 -translate-y-1/2 min-h-[44px] px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 cursor-pointer z-20 shadow-md ${
                     activeId === '09'

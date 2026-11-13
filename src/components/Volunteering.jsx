@@ -7,8 +7,7 @@ import Card from './ui/Card';
 import { volunteering } from '../data/resume';
 
 const volunteerPhotos = [
-  { src: '/images/vol-1.jpg', alt: 'Vizag Volunteers on-ground operations' },
-  { src: '/images/vol-2.jpg', alt: 'Vizag Volunteers crowd coordination and logistics' }
+  { src: '/images/vol-1.jpg', alt: 'Vizag Volunteers on-ground operations' }
 ];
 
 export default function Volunteering() {
@@ -95,27 +94,26 @@ export default function Volunteering() {
           </div>
         </Card>
 
-        {/* Right Column (lg:col-span-5): Full Bento Visual Card with Enlarged Photo Stack */}
+        {/* Right Column (lg:col-span-5): Full Bento Visual Card with Single Full-Width Photo */}
         <Card className="lg:col-span-5 p-6 flex flex-col justify-between border-[var(--border-card)] overflow-hidden">
           <div className="flex items-center justify-between border-b border-[var(--border-card)] pb-3 mb-4">
             <span className="text-xs font-bold text-[var(--accent)] uppercase tracking-wider">
               On-Ground Event Operations
             </span>
-            <span className="text-[11px] text-[var(--text-secondary)]">2 Verified Images</span>
           </div>
 
-          <div className="grid grid-cols-2 gap-3.5 my-auto">
+          <div className="w-full my-auto">
             {volunteerPhotos.map((photo, i) => (
               <div
                 key={i}
                 onClick={() => setSelectedImg(photo)}
-                className="group relative h-48 sm:h-56 rounded-xl overflow-hidden border border-[var(--border-card)] cursor-pointer bg-black/40 shadow-sm"
+                className="group relative w-full h-full min-h-[260px] rounded-lg overflow-hidden border border-[var(--border-card)] cursor-pointer bg-black/40 shadow-sm"
                 title="Click to view full photo"
               >
                 <img
                   src={photo.src}
                   alt={photo.alt}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full min-h-[260px] object-cover rounded-lg group-hover:scale-105 transition-transform duration-500"
                   onError={(e) => {
                     e.currentTarget.src = '/images/headshot.jpg';
                   }}
