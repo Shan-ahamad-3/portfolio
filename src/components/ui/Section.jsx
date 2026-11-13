@@ -1,5 +1,3 @@
-import { motion, useReducedMotion } from 'framer-motion';
-
 /**
  * Clean, broad section container wrapper with comfortable max-w-6xl horizontal space
  * and tightened vertical rhythm (py-16 md:py-20) with consistent px-4 sm:px-6 lg:px-8 padding.
@@ -12,24 +10,13 @@ export default function Section({
   className = "",
   containerClassName = "max-w-6xl px-4 sm:px-6 lg:px-8 mx-auto"
 }) {
-  const shouldReduceMotion = useReducedMotion();
-
-  const animationProps = shouldReduceMotion
-    ? {}
-    : {
-        initial: { opacity: 0, y: 16 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true, margin: "-40px" },
-        transition: { duration: 0.45, ease: "easeOut" }
-      };
-
   return (
     <section id={id} className={`py-16 md:py-20 scroll-mt-20 ${className}`}>
       <div className={containerClassName}>
         {(title || subtitle) && (
-          <motion.div {...animationProps} className="mb-10 text-left space-y-2">
+          <div className="mb-10 text-left space-y-2">
             {title && (
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[var(--text-primary)]">
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[var(--text-primary)] font-heading">
                 {title}
               </h2>
             )}
@@ -38,12 +25,12 @@ export default function Section({
                 {subtitle}
               </p>
             )}
-          </motion.div>
+          </div>
         )}
 
-        <motion.div {...animationProps}>
+        <div>
           {children}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

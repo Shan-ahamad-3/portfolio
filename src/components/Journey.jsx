@@ -1,182 +1,115 @@
-import { useState, useRef, useEffect } from 'react';
-import { motion, useScroll, useReducedMotion } from 'framer-motion';
-import { FiCalendar } from 'react-icons/fi';
+import { FiCalendar, FiAward, FiBookOpen } from 'react-icons/fi';
 import Section from './ui/Section';
 import Card from './ui/Card';
 import { education } from '../data/resume';
 
-function TrainLocomotive({ className = "w-6 h-6" }) {
-  return (
-    <svg 
-      className={className} 
-      viewBox="0 0 24 24" 
-      fill="none" 
-      stroke="currentColor" 
-      strokeWidth="1.8" 
-      strokeLinecap="round" 
-      strokeLinejoin="round"
-    >
-      <path d="M4 15V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v7" />
-      <path d="M4 15h16" />
-      <path d="M7 8h10v3H7z" fill="currentColor" fillOpacity="0.2" />
-      <rect x="3" y="15" width="18" height="3" rx="1" fill="currentColor" fillOpacity="0.3" />
-      <circle cx="7" cy="19" r="1.5" fill="currentColor" />
-      <circle cx="17" cy="19" r="1.5" fill="currentColor" />
-      <path d="M12 4V2" />
-      <circle cx="12" cy="13" r="1" fill="var(--accent)" stroke="var(--accent)" />
-    </svg>
-  );
-}
-
 export default function Journey() {
-  const containerRef = useRef(null);
-  const cardRefs = useRef([]);
-  const [activeStation, setActiveStation] = useState(null);
-  const [stationOffsets, setStationOffsets] = useState([0, 0, 0]);
-  const [trackBounds, setTrackBounds] = useState({ top: 0, height: 0 });
-  const shouldReduceMotion = useReducedMotion();
-
-  // Scroll tracking across the milestones container
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start center", "end center"]
-  });
-
-  const [scrollProgress, setScrollProgress] = useState(0);
-
-  useEffect(() => {
-    const unsubscribe = scrollYProgress.on("change", (latest) => {
-      setScrollProgress(latest);
-    });
-    return () => unsubscribe();
-  }, [scrollYProgress]);
-
-  // Recalculate card vertical centers and track boundary relative to containerRef
-  useEffect(() => {
-    const updateDimensions = () => {
-      if (!containerRef.current) return;
-      const containerRect = containerRef.current.getBoundingClientRect();
-
-      const offsets = cardRefs.current.map((cardEl) => {
-        if (!cardEl) return 0;
-        const rect = cardEl.getBoundingClientRect();
-        return rect.top - containerRect.top + rect.height / 2;
-      });
-
-      if (offsets.length >= 2) {
-        const top = offsets[0];
-        const bottom = offsets[offsets.length - 1];
-        setStationOffsets(offsets);
-        setTrackBounds({ top, height: Math.max(0, bottom - top) });
-      }
-    };
-
-    updateDimensions();
-    window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize', updateDimensions);
-  }, []);
-
-  // Compute locomotive Y position:
-  // If user hovers over a station, glide smoothly to that station's exact vertical center.
-  // Otherwise, default to scroll progression interpolating between Station 1 and Station 3.
-  const targetTrainY = activeStation !== null && stationOffsets[activeStation] !== undefined
-    ? stationOffsets[activeStation]
-    : trackBounds.top + Math.min(Math.max(scrollProgress, 0), 1) * trackBounds.height;
-
-  // Active track height relative to trackBounds.top
-  const activeTrackHeight = Math.max(0, Math.min(targetTrainY - trackBounds.top, trackBounds.height));
+  const bsc = education.find((e) => e.stage.includes('B.Sc')) || education[2];
+  const inter = education.find((e) => e.stage.includes('Intermediate')) || education[1];
+  const ssc = education.find((e) => e.stage.includes('SSC')) || education[0];
 
   return (
     <Section 
       id="milestones" 
       title="Academic Milestones" 
-      subtitle="Comprehensive educational trajectory capping strictly at Bachelor of Science in Computer Science."
     >
-      <div ref={containerRef} className="relative pl-10 sm:pl-16 md:pl-20 py-4 font-mono">
+      {/* Bento Grid Architecture: 3-column mosaic with interlocking hierarchy */}
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 font-mono">
         
-        {/* Continuous Track Line: starts precisely at Station 1 center and ends exactly at Station 3 center */}
-        {trackBounds.height > 0 && (
-          <div 
-            style={{
-              top: `${trackBounds.top}px`,
-              height: `${trackBounds.height}px`
-            }}
-            className="absolute left-4 sm:left-7 md:left-8 w-[3px] bg-[var(--border-card)] rounded-full pointer-events-none"
-          >
-            {/* Animated active track fill */}
-            {!shouldReduceMotion && (
-              <motion.div 
-                animate={{ height: activeTrackHeight }}
-                transition={{ type: "spring", stiffness: 120, damping: 20 }}
-                className="w-full theme-accent-bg rounded-full"
-              />
-            )}
+        {/* Flagship Terminus Card: B.Sc. Computer Science (Spans 2 columns on tablet, 2 or 3 on desktop) */}
+        <Card className="md:col-span-2 lg:col-span-2 md:row-span-2 p-6 sm:p-8 flex flex-col justify-between border-[var(--accent-border)] shadow-md relative overflow-hidden group">
+          {/* Subtle accent highlight badge */}
+          <div className="flex items-center justify-between gap-3 mb-6">
+            <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[var(--accent-muted)] text-[var(--accent)] border border-[var(--accent-border)]">
+              Degree Terminus
+            </span>
+            <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+              <FiCalendar className="w-3.5 h-3.5 theme-accent" />
+              <span>{bsc.year}</span>
+            </span>
           </div>
-        )}
 
-        {/* Dynamic Train Locomotive gliding to hovered node or following scroll */}
-        {!shouldReduceMotion && trackBounds.height > 0 && (
-          <motion.div
-            animate={{ y: targetTrainY }}
-            initial={false}
-            transition={{ type: "spring", stiffness: 120, damping: 20 }}
-            className="absolute left-4 sm:left-7 md:left-8 -translate-x-1/2 top-0 z-20 pointer-events-none -mt-4 flex flex-col items-center"
-          >
-            <div className="p-1.5 rounded-lg bg-[var(--bg-card)] border-2 theme-accent-border theme-accent shadow-lg">
-              <TrainLocomotive className="w-5 h-5 theme-accent" />
+          <div className="space-y-4 my-auto">
+            <div className="space-y-1.5">
+              <span className="text-xs font-bold text-[var(--accent)] uppercase tracking-wider">
+                {bsc.stage}
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-bold font-heading text-[var(--text-primary)] leading-tight">
+                {bsc.school}
+              </h3>
             </div>
-          </motion.div>
-        )}
+            
+            <p className="text-sm sm:text-base text-[var(--text-secondary)] font-sans leading-relaxed">
+              Specialized in core Computer Science fundamentals, object-oriented systems, data architectures, and analytical computing.
+            </p>
+          </div>
 
-        {/* 3 Strict Milestone Cards stretching across wide container */}
-        <div className="space-y-6">
-          {education.map((item, idx) => {
-            const isTerminus = item.isTerminus;
-            const isHovered = activeStation === idx;
+          <div className="pt-6 border-t border-[var(--border-card)] flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-2">
+              <FiAward className="w-4 h-4 text-[var(--accent)]" />
+              <span className="text-xs font-semibold text-[var(--text-primary)]">{bsc.degree}</span>
+            </div>
+            <span className="px-3 py-1 rounded-lg bg-[var(--bg-card)] border border-[var(--border-card)] text-xs font-bold text-[var(--accent)]">
+              {bsc.detail}
+            </span>
+          </div>
+        </Card>
 
-            return (
-              <div 
-                key={idx} 
-                ref={(el) => (cardRefs.current[idx] = el)}
-                onMouseEnter={() => setActiveStation(idx)}
-                onMouseLeave={() => setActiveStation(null)}
-                className="relative"
-              >
-                <Card className={`p-6 sm:p-8 rounded-2xl glass-card transition-all duration-300 ease-out cursor-default hover:-translate-y-1 hover:shadow-xl hover:border-[var(--accent)] ${
-                  isHovered
-                    ? "-translate-y-1 shadow-xl border-[var(--accent)]"
-                    : isTerminus
-                      ? "border-[var(--accent-border)] shadow-sm"
-                      : "border-white/10 shadow-xs"
-                }`}>
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div className="space-y-2">
-                      <span className="text-xs font-bold theme-accent uppercase tracking-wider font-mono">
-                        {item.stage}
-                      </span>
-                      <h3 className="text-xl sm:text-2xl font-bold font-heading text-[var(--text-primary)] leading-snug">
-                        {item.school}
-                      </h3>
-                      <p className="text-sm text-[var(--text-secondary)] font-sans">
-                        {item.degree}
-                      </p>
-                    </div>
+        {/* Intermediate MPC Card */}
+        <Card className="md:col-span-1 lg:col-span-2 p-6 sm:p-7 flex flex-col justify-between border-[var(--border-card)] hover:border-[var(--accent)]/60">
+          <div className="flex items-center justify-between gap-2 mb-4">
+            <span className="text-xs font-bold text-[var(--accent)] uppercase tracking-wider">
+              {inter.stage}
+            </span>
+            <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+              <FiCalendar className="w-3.5 h-3.5 theme-accent" />
+              <span>{inter.year}</span>
+            </span>
+          </div>
 
-                    <div className="flex flex-wrap items-center gap-3 text-xs self-start sm:self-auto shrink-0">
-                      <span className="flex items-center gap-1.5 text-[var(--text-secondary)]">
-                        <FiCalendar className="w-3.5 h-3.5 theme-accent" />
-                        <span>{item.year}</span>
-                      </span>
-                      <span className="px-3.5 py-1.5 rounded-md bg-white/5 text-[var(--text-primary)] font-semibold border border-[var(--border-card)]">
-                        {item.detail}
-                      </span>
-                    </div>
-                  </div>
-                </Card>
-              </div>
-            );
-          })}
-        </div>
+          <div className="space-y-2 mb-4">
+            <h3 className="text-lg sm:text-xl font-bold font-heading text-[var(--text-primary)]">
+              {inter.school}
+            </h3>
+            <p className="text-xs text-[var(--text-secondary)] font-sans">
+              Mathematics, Physics & Chemistry focus building logical foundation.
+            </p>
+          </div>
+
+          <div className="pt-4 border-t border-[var(--border-card)] flex items-center justify-between text-xs">
+            <span className="text-[var(--text-secondary)]">{inter.degree}</span>
+            <span className="font-semibold text-[var(--text-primary)]">{inter.detail}</span>
+          </div>
+        </Card>
+
+        {/* Secondary School Certificate (SSC) Card */}
+        <Card className="md:col-span-1 lg:col-span-2 p-6 sm:p-7 flex flex-col justify-between border-[var(--border-card)] hover:border-[var(--accent)]/60">
+          <div className="flex items-center justify-between gap-2 mb-4">
+            <span className="text-xs font-bold text-[var(--accent)] uppercase tracking-wider">
+              {ssc.stage}
+            </span>
+            <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+              <FiCalendar className="w-3.5 h-3.5 theme-accent" />
+              <span>{ssc.year}</span>
+            </span>
+          </div>
+
+          <div className="space-y-2 mb-4">
+            <h3 className="text-lg sm:text-xl font-bold font-heading text-[var(--text-primary)]">
+              {ssc.school}
+            </h3>
+            <p className="text-xs text-[var(--text-secondary)] font-sans">
+              Secondary school curriculum culminating with distinction.
+            </p>
+          </div>
+
+          <div className="pt-4 border-t border-[var(--border-card)] flex items-center justify-between text-xs">
+            <span className="text-[var(--text-secondary)]">{ssc.degree}</span>
+            <span className="font-bold text-[var(--accent)] bg-[var(--accent-muted)] px-2.5 py-0.5 rounded-md border border-[var(--accent-border)]">
+              {ssc.detail}
+            </span>
+          </div>
+        </Card>
 
       </div>
     </Section>

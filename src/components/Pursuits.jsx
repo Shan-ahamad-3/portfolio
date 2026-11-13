@@ -83,9 +83,6 @@ export default function Pursuits() {
           <h2 className="text-4xl font-bold tracking-tight text-[var(--text-primary)] font-heading">
             Pursuits Beyond Code
           </h2>
-          <p className="text-base text-[var(--text-secondary)] max-w-2xl leading-relaxed">
-            Four disciplined polar coordinates cultivating mental stamina, tactical calculation, physical resilience, and quiet composure.
-          </p>
         </div>
 
         {/* Unified Silver Glass Container Split into Two Columns */}

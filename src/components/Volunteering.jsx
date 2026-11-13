@@ -17,7 +17,6 @@ export default function Volunteering() {
     <Section 
       id="volunteering" 
       title="Volunteering Leadership" 
-      subtitle="Large-scale public event cohort leadership, crowd orientation, and rapid incident coordination."
     >
       <div className="space-y-6">
         
